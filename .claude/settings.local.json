@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:www.cis.udel.edu)",
-      "WebFetch(domain:www1.udel.edu)"
+      "WebFetch(domain:www1.udel.edu)",
+      "Bash(for path in \"1. Highschool/01-AP Computer Science\" \"2. College/CISC-181\" \"2. College/CISC-220\" \"2. College/CISC-280\" \"2. College/CISC-360\" \"2. College/CISC-361\" \"2. College/CISC-370\" \"2. College/CISC-450\" \"2. College/CISC-475\" \"2. College/CISC-475/Chat-Standalone\" \"2. College/CISC-479\" \"3. Job Search 2014/CsvDemo\")",
+      "Bash(do)",
+      "Bash(if [ -d \"$path\" ])",
+      "Bash(then echo \"OK  $path\")",
+      "Bash(else echo \"MISSING  $path\")",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   }
 }
