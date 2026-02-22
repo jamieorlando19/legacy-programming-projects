@@ -16,9 +16,9 @@ A collection of personal programming projects spanning from high school through 
 
 | Course | Description |
 |--------|-------------|
-| [CISC 181](2.%20College/02-CISC181) — Introduction to Computer Science | C++ projects covering Easter date calculation, grade processing, and an OOP banking system; plus a Java applet for videoconference cost comparison |
-| [CISC 220](2.%20College/03-CISC220) — Data Structures | Custom hash table with a binary search tree index and a SQL-inspired query interface (`print_where`, `join_all`, `order_by`) |
-| [CISC 280](2.%20College/05-CISC280) — Program Development Techniques | Functional programming assignments in Scheme — digit manipulation, recursion, higher-order functions, and a game built entirely in Scheme |
+| [CISC 181](2.%20College/CISC-181) — Introduction to Computer Science | C++ projects covering Easter date calculation, grade processing, and an OOP banking system; plus a Java applet for videoconference cost comparison |
+| [CISC 220](2.%20College/CISC-220) — Data Structures | Custom hash table with a binary search tree index and a SQL-inspired query interface (`print_where`, `join_all`, `order_by`) |
+| [CISC 280](2.%20College/CISC-280) — Program Development Techniques | Functional programming assignments in Scheme — digit manipulation, recursion, higher-order functions, and a game built entirely in Scheme |
 | [CISC 360](2.%20College/CISC-360) — Computer Architecture | Lecture notes and presentations; no source code retained |
 | [CISC 361](2.%20College/CISC-361) — Operating Systems | C projects: a pthreads race condition demo and a Unix shell interpreter with built-in commands, PATH resolution, and `fork`/`execve` process execution |
 | [CISC 370](2.%20College/CISC-370) — Object-Oriented Programming, Java and the World Wide Web | Java assignments covering inheritance hierarchies, generic sorting, Java2D flag graphics, socket-based file transfer, and a networked multiplayer Scrabble game |
