@@ -1,0 +1,194 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;       This is the file types.scm
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define false #f)
+;;; The bottom level typing system
+
+(define attach-tag cons)
+
+(define (type-tag datum)
+  (if (pair? datum)
+      (car datum)
+      (error "Bad typed datum -- TYPE-TAG" datum)))
+
+(define (contents datum)
+  (if (pair? datum)
+      (cdr datum)
+      (error "Bad typed datum -- CONTENTS" datum)))
+
+
+;;; The apply-generic mechanism.  
+;;;  Note that we don't deal with coercion here.
+
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+    (let ((proc (get op type-tags)))
+      (if proc
+          (apply proc (map contents args))
+          (error "No method for the given types -- APPLY-GENERIC"
+		 (list op type-tags))))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Code for creating the table, YOU DON'T NEED TO WORRY ABOUT THIS.
+;;; We will cover this material in Chapter 3.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define (make-table)
+  (let ((local-table (list '*table*)))
+
+    (define (lookup key-1 key-2)
+      (let ((subtable (assoc key-1 (cdr local-table))))
+        (if subtable
+            (let ((record (assoc key-2 (cdr subtable))))
+              (if record
+                  (cdr record)
+                  false))
+            false)))
+
+    (define (insert! key-1 key-2 value)
+      (let ((subtable (assoc key-1 (cdr local-table))))
+        (if subtable
+            (let ((record (assoc key-2 (cdr subtable))))
+              (if record
+                  (set-cdr! record value)
+                  (set-cdr! subtable
+                            (cons (cons key-2 value)
+                                  (cdr subtable)))))
+            (set-cdr! local-table
+                      (cons (list key-1
+                                  (cons key-2 value))
+                            (cdr local-table)))))
+      'ok)
+
+    (define (dispatch m)
+      (cond ((eq? m 'lookup-proc) lookup)
+            ((eq? m 'insert-proc!) insert!)
+            (else (error "Unknown operation -- TABLE" m))))
+
+    dispatch))
+
+
+(define operation-table (make-table))
+(define get (operation-table 'lookup-proc))
+(define put (operation-table 'insert-proc!))
+
+(define (install-wine-package)
+  ;;internal procedures
+  (define (get-name f) (car f))
+  (define (get-price f) (cadr f))
+  (define (get-type f) (caddr f))
+  (define (get-sweetness f) (cadddr f))
+  (define (make-food name price type sweetness)
+    (list name price type sweetness))
+  ;;interfaces to the rest of the system
+  (define (tag x) (attach-tag 'wine  x))
+  (put 'get-name '(wine) get-name)
+  (put 'get-price '(wine) get-price)
+  (put 'get-type '(wine) get-type)
+  (put 'get-sweetness '(wine) get-sweetness)
+  (put 'make-food 'wine
+       (lambda (name price type sweetness)
+	 (tag (make-food name price type sweetness))))
+  'DONE)
+
+(define (install-cheese-package)
+  ;;internal procedures
+  (define (get-name f) (car f))
+  (define (get-price f) (cadr f))
+  (define (get-type f) (caddr f))
+  (define (make-food name price type)
+    (list name price type))
+  ;;interfaces to the rest of the system
+  (define (tag x) (attach-tag 'cheese x))
+  (put 'get-name '(cheese) get-name)
+  (put 'get-type '(cheese) get-type)
+  (put 'get-price '(cheese) get-price)
+  (put 'make-food 'cheese
+       (lambda (name price type)
+         (tag (make-food name price type))))
+  'DONE)
+
+;;External Interface
+(define (make-wine name price type sweetness)
+  ((get 'make-food 'wine) name price type sweetness))
+(define (make-cheese name price type)
+  ((get 'make-food 'cheese) name price type))
+(define (get-name f) (apply-generic 'get-name f))
+(define (get-price f) (apply-generic 'get-price f))
+(define (get-type f) (apply-generic 'get-type f))
+(define (get-sweetness f) (apply-generic 'get-sweetness f))
+
+(define (print-list food-list)
+  (if (null? food-list)
+      (newline)
+      (begin (display (get-name (car food-list)))
+             (display "        ")
+             (display (get-price (car food-list)))
+             (newline)
+             (print-list (cdr food-list)))))
+
+(define (compatible? food1 food2)
+  (cond ((and (cheese? food1) (cheese? food2))
+         #t)
+        ((and (wine? food1) (wine? food2))
+         (if (eq? (get-sweetness food1) (get-sweetness food2))
+	     #t
+	     #f))
+        ((wine? food1)
+	 (if (or (and (eq? (get-type food1) 'white) (eq? (get-type food2) 'mild))
+		 (and (eq? (get-type food1) 'red) (eq? (get-type food2) 'blue)))
+	     #t
+	     #f))
+        ((wine? food2)
+	 (if (or (and (eq? (get-type food1) 'mild) (eq? (get-type food2) 'white))
+		 (and (eq? (get-type food1) 'blue) (eq? (get-type food2) 'red)))
+	     #t
+	     #f))
+        (else #f)))
+
+
+(define (wine? food)
+  (or (eq? (get-type food) 'red) (eq? (get-type food) 'white)))
+
+(define (cheese? food)
+  (or (eq? (get-type food) 'blue) (eq? (get-type food) 'mild) 
+      (eq? (get-type food) 'smoked) (eq? (get-type food) 'sharp)))
+
+(define (make-monitored function)
+  (let ((counter 0))
+    (lambda (argument)
+      (cond ((eq? argument 'how-many-calls?)
+             counter)
+            ((eq? argument 'reset-count)
+             (set! counter 0))
+            (else (begin (display (function argument))
+                         (set! counter (+ counter 1))))))))
+
+(define (square x) (* x x))
+
+(define (make-account balance password)
+   (define illegal-passwords 0)
+   (define (withdraw amount)
+      (if (>= balance amount)
+           (begin (set! balance (- balance amount))
+                   balance)
+           "Insufficient Funds"))
+    (define (deposit amount)
+      (set! balance (+ balance amount))
+       balance)
+     (define (dispatch pw m)
+       (cond ((not (eq? password pw))
+              (begin (set! illegal-passwords (+ illegal-passwords 1))
+                     (display "Incorrect Password")
+                     (cond ((> illegal-passwords 7) (call-the-cops)))))
+             (else (cond ((eq? m 'withdraw) withdraw)
+                         ((eq? m 'deposit) deposit)
+                         (else (error "Unknown request -- MAKE-ACCOUNT"
+                                      m))))))
+      dispatch)
+
+(define (call-the-cops) 
+  (newline)
+  (display "The police have been notified of you're attempt of hacking the system."))
+      
+

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.1_02" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.ClassDiagramGraph"> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- artistName: Text
+- songTitle: Text
+- path: Text
+</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ MP3File()
++ setArtistName(name: Text)
++ getArtstName(): Text
++ setSongTitle(title: Text)
++ getSongTitle(): Text
++ setPath(path: Text)
++ getPath(): Text</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>MP3File
+</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>80.0</double> 
+    <double>30.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- caption: Text
+- path: Text</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ setCaption(c: Text)
++ getCaption(): Text
++ setPath(path: Text)
++ getPath(): Text</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ImageFile</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>490.0</double> 
+    <double>260.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- datePosted: Date
+- title: Text
+- messageBody: Text</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ NewItem()
++ setDatePosted(date: Date)
++ getDatePosted(): Date
++ setTitle(title: Text)
++ getTitle(): Text
++ setMessageBody(mb: Text)
++ getMessageBody(): Text</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>NewsItem
+</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>160.0</double> 
+    <double>300.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- messageBody: Text</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ Bio()
++ setBio(bio: Text)
++ getBio(): Text</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Bio</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>400.0</double> 
+    <double>60.0</double> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

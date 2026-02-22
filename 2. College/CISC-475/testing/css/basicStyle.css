@@ -1,0 +1,54 @@
+<!-- basic style sheet modified from http://www.moreservlets.com by Chris
+   Cali -->
+
+<STYLE TYPE="text/css">
+<!--
+BODY { background: #FDF5E6
+       margin-left: 5%; margin-right: 5%; 
+       font-family: sans-serif,Arial, Helvetica
+}
+A:link { color: blue}
+A:visited { color: purple}
+A:hover { color: red }
+A:active { color: black}
+
+H1 { color: #440000;
+     text-align: center;
+     font-family: Arial Black, Arial, Helvetica, sans-serif
+}
+H2 { color: #440000;
+     text-align: left;
+     font-family: Arial, Helvetica, sans-serif
+}
+H3 { color: #440000;
+     text-align: left;
+     font-family: Arial, Helvetica, sans-serif
+}
+.center { text-align: center }
+UL { margin-top: 0;
+     border-top-width: 0;
+     padding-top: 0
+}
+<!-other types include disc, circle, and none -->
+UL.square { list-style-type: square }
+DT { font-weight: bold;
+}
+PRE { font-size: 95%;
+}
+CODE {  font-family: courier;
+}
+.TOC { font-size: 90%;
+       font-weight: bold;
+       font-family: Arial, Helvetica, sans-serif
+}
+TABLE.center { margin-left: auto;
+	       margin-right: auto
+}
+.colored{ background: #FFAD00
+}
+TH { background: #EF8429;
+     font-size: 105%;
+     font-family: sans-serif, Arial, Helvetica;
+}
+-->
+</STYLE>

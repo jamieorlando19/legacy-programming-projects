@@ -1,0 +1,41 @@
+Welcome to DrScheme, version 53.
+Language: R4RS+.
+> (decimal-length 123)
+3
+> (decimal-length 123614689317)
+12
+> (ith-digit 190357987 5)
+5
+> (ith-digit 9801734897239576 10)
+7
+> (ith-digit 897631587926 6)
+1
+> (leading-digit 983712902568795183)
+9
+> (leading-digit 678361458)
+6
+> (occurrances 4 19203714987391507987)
+reference to undefined identifier: occurrances
+> (occurances 4 19203714987391507987)
+1
+> (occurances 6 57863187546163781463562165)
+6
+> (occurances 5 5931456158665267154354782563415455555)
+13
+> (digit-sum 1234)
+10
+> (digit-sum 123456789)
+45
+> (digit-sum 5413)
+13
+> (digit-sum 4132905797904731)
+71
+> (digital-root 4132905797904731)
+8
+> (digital-root 5413)
+4
+> (digital-root 123456789)
+9
+> (digital-root 98127589658989821596872618936873462183576512764)
+8
+> 

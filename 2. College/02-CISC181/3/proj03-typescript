@@ -1,0 +1,455 @@
+Script started on Mon Nov 15 10:31:56 1999
+> cat proj03-cov 
+
+              CIS 181 Programming Assignment
+
+
+        Assignment: Programming Project 3  
+
+        Programmer: Jamie Orlando
+        Login name: orlandoj  
+
+
+
+
+                 
+    CORRECTNESS                        | Possible |  Grade  
+   ------------------------------------+----------+---------+
+        C:  Correct operation          |   35%    |         |
+       --------------------------------+----------+---------|
+        T:  Testing                    |   15%    |         |
+       --------------------------------+----------+---------|
+
+    CLARITY                                                 
+   ------------------------------------+----------+---------+
+        D:  Documentation              |   15%    |         |
+       --------------------------------+----------+---------+
+        M:  Class structure            |   10%    |         |
+       --------------------------------+----------+---------+
+        C:  Code structure             |   10%    |         |
+       --------------------------------+----------+---------+
+        N:  Naming                     |   10%    |         |
+       --------------------------------+----------+---------+
+        F:  Formatting                 |    5%    |         |
+       --------------------------------+----------+---------+
+                               TOTAL   |  100%    |         |
+                                       +----------+---------+
+
+> proj03-dupgra[K[K[K[K[K[K[K[K[K[K[K[K[Kcat proj03-dupgrade.cc 
+//Project #3
+//Reads a file of people's names and info, and puts in order by name; also erases duplicate records
+
+#include<stream.h>
+#include<string.h>
+#include<iomanip.h>
+
+const int MAX_RECORDS = 100;     //Maximum number of records in a file
+const int MAX_NAME = 10;         //Maximum length of a first name or last name
+const int PHONE_SIZE = 9;        //Length of a phone number (with dash)
+const int MAX_EMAIL = 35;        //Maximum length of an email address
+const int MAX_FILENAME = 20;     //Maximum length of a file name
+
+struct Name
+{
+   char first[MAX_NAME];
+   char last[MAX_NAME];
+};
+
+struct SupporterRecord
+{
+   Name name;
+   char phone[PHONE_SIZE];
+   char email[MAX_EMAIL];
+};
+
+int correct(ifstream &, ifstream &, char *, char *);
+void sortRecords(SupporterRecord [], int &, ifstream &, ifstream &);
+void readdata(ifstream &, SupporterRecord [], int &);
+int namecmp(Name, Name);
+void sort(SupporterRecord [], int);
+void makeOutput(ofstream &, SupporterRecord [], int);
+
+int main()
+{
+   SupporterRecord final[MAX_RECORDS * 2];
+   int size = 0;                //Logical size of the record array
+   char file1name[MAX_FILENAME];
+   char file2name[MAX_FILENAME];
+   char file3name[MAX_FILENAME];
+   cout << "Enter the name of the first file: ";
+   cin >> file1name;
+   cout << "Enter the name of the second file: ";
+   cin >> file2name;
+   ifstream file1(file1name);
+   ifstream file2(file2name);
+   if(!file1 || !file2) 
+   {
+      int errorcheck;
+      errorcheck = correct(file1, file2, file1name, file2name);
+      if(errorcheck == 1)
+      {
+         cout << "Program aborted." << endl;
+         return 1;   //If user quits  
+      }
+   }
+   cout << "Enter a new file name to write to: ";
+   cin >> file3name;
+   ofstream out(file3name);
+   
+   sortRecords(final, size, file1, file2);
+   makeOutput(out, final, size);
+
+   cout << file3name << " created sucessfully!" << endl;
+   return 0;
+}
+
+int correct(ifstream &f1, ifstream &f2, char *name1, char *name2)
+{
+   while(!f1 || !f2)
+   {
+      if(!f1)
+      {
+         cout << name1 << " does not exist.  Please type a new name, or 'q' to quit: ";
+         cin >> name1;
+         if(strcmp(name1, "q") == 0) return 1;
+         f1.open(name1);
+      }
+      else
+      {
+         cout << name2 << " does not exist.  Please type a new name, or 'q' to quit: ";
+         cin >> name2;
+         if(strcmp(name2, "q") == 0) return 1; 
+         f2.open(name2);
+      }
+   }
+   return 0;
+}
+
+void sortRecords(SupporterRecord list [], int &n, ifstream &f1, ifstream &f2)
+{
+   SupporterRecord sub1[MAX_RECORDS], sub2[MAX_RECORDS];
+   int a, b;   
+
+   readdata(f1, sub1, a);
+   readdata(f2, sub2, b);
+   sort(sub1, a);
+   sort(sub2, b);
+   
+   int x = 0, y = 0;
+   while(x < a && y <b)
+   {
+      if(namecmp(sub1[x].name, sub2[y].name) < 0)
+      {
+         list[n] = sub1[x];  
+         ++x; ++n;
+      }
+      else if(namecmp(sub2[y].name, sub1[x].name) < 0)
+      {
+         list[n] = sub2[y];
+         ++y; ++n;
+      }
+      else
+      {
+         list[n] = sub1[x];
+         ++x; ++y; ++n;
+      }
+   }
+   for( ; x < a; ++x, ++n)
+      list[n] = sub1[x];
+   for( ; y < b; ++y, ++n)
+      list[n] = sub2[y]; 
+}
+
+void readdata(ifstream &f, SupporterRecord list[], int &n)
+{
+   SupporterRecord temp;
+   n = 0;
+   if(f >> list[0].name.first >> list[0].name.last >> list[0].phone >> list[0].email) ++n;
+   while((f >> temp.name.first >> temp.name.last >> temp.phone >> temp.email) && (n < MAX_RECORDS))
+   {
+      for(int x = 0; x < n && namecmp(temp.name, list[x].name) != 0; ++x);
+      if(x == n)
+      {
+         list[n] = temp;
+         ++n;
+      }
+   }
+}
+
+int namecmp(Name n1, Name n2)
+{
+   if(strcmp(n1.last, n2.last) == 0)
+   {
+      if(strcmp(n1.first, n2.first) == 0)
+         return 0;
+      else
+         return strcmp(n1.first, n2.first);
+   }
+   else
+      return strcmp(n1.last, n2.last);
+}
+
+inline void swap(SupporterRecord &a, SupporterRecord &b)
+{ SupporterRecord t = a; a = b; b = t; }
+
+void sort(SupporterRecord A[], int n)
+{
+   int i, j, min;
+   for (i = 0; i < n; i++)
+   {
+      min = i;
+      for (j = i + 1; j < n; ++j)
+         if (namecmp(A[j].name, A[min].name) < 0) min = j;
+
+       swap(A[i], A[min]);
+    }                           
+}
+
+void makeOutput(ofstream &file, SupporterRecord list [], int n)
+{
+   char name[MAX_NAME * 2 + 1];
+   file.setf(ios::left); 
+   if(n == 0) file << "No data." << endl;
+   for(int a = 0; a < n; ++a)
+   {
+      strcpy(name, list[a].name.first);
+      strcat(name, " ");
+      strcat(name, list[a].name.last);
+      file << setw(MAX_NAME * 2 + 1) << name << setw(PHONE_SIZE) << list[a].phone << " " << list[a].email << endl;
+   }
+}
+> CC -compat proj03-dupgrade.cc 
+> a.[K[Kcat campaign-file1
+Karol Henderson 542-1244 khend@compuserve.com
+Wayne Harris    743-2356 harris@leland.stanford.edu
+Jamal Baddoura  987-6543 baddoura@udel.edu
+George King     932-7745 thethird@madman.com
+Daisy Duck      396-1212 daisy@disney.com
+Megan Cross     555-3475 mcross@torture.com
+Tycho Brahe     462-9531 goldnose@nordita.dk
+Owen Drumlang   364-8038 drummer@udel.edu
+Pat Smith       493-5223 androgony@snl.com
+Rhea Concade    414-8006 rconcade@psu.edu
+Geoffrey Frank  396-2734 geo@prodigy.com
+Erin Weiss      395-8321 eweiss@ix.netcom.com
+Jamie Gutierrez 834-9988 jamie@aol.com
+Jamal Baddoura  987-6543 baddoura@udel.edu
+David Goldstein 987-1234 dgold@udel.edu
+Ruth Goldstein  737-4567 goldstei@udel.edu
+Arthur Cater    343-4591 arthur@prodigy.com
+Denise Reynolds 722-2032 deniser@ix.netcom.com
+Karol Henderson 542-1244 khend@compuserve.com
+Daphne Einstein 454-9810 brain@leland.stanford.edu
+Big Attitude    215-3998 whatsit@toya.com
+Forget Me       676-3369 forgetme@not.drew.edu
+Cynthia Reed    464-0991 creed@ix.netcom.com
+John Doe        398-4372 whoami@unknown.edu
+Guess Who       459-9810 itsme@ghost.spook
+Suzy Que        650-2464 printer@udel.edu
+Jane Doe        443-7634 whoami2@unknown.edu
+Mike Rophone    496-5432 volume@sound.com
+Too Cute        759-3954 toocute@foryou.edu
+Alan Dixie      348-4630 rancher@psu.edu
+Blue Jeans      599-0201 bluejean@pants.com
+Jamie Gutierrez 834-9988 jamie@aol.com
+Jamal Baddoura  987-6543 baddoura@udel.edu
+David Goldstein 987-1234 dgold@udel.edu
+Ruth Goldstein  737-4567 goldstei@udel.edu
+> cat campaign-file2
+David Goldstein 987-1234 dgold@udel.edu
+Ruth Goldstein  737-4567 goldstei@udel.edu
+Jamie Gutierrez 834-9988 jamie@aol.com
+Jamal Baddoura  987-6543 baddoura@udel.edu
+Daphne Einstein 454-9810 brain@leland.stanford.edu
+Big Attitude    215-3998 whatsit@toya.com
+Forget Me       676-3369 forgetme@not.drew.edu
+Cynthia Reed    464-0991 creed@ix.netcom.com
+John Doe        398-4372 whoami@unknown.edu
+Guess Who       459-9810 itsme@ghost.spook
+Suzy Que        650-2464 printer@udel.edu
+Jane Doe        443-7634 whoami2@unknown.edu
+Mike Rophone    496-5432 volume@sound.com
+Too Cute        759-3954 toocute@foryou.edu
+Alan Dixie      348-4630 rancher@psu.edu
+Blue Jeans      599-0201 bluejean@pants.com
+Francis Smith   505-0933 frank@hotmail.com
+George King     932-7745 thethird@madman.com
+Horace Blythe   641-1093 horse@yeeha.edu
+Ingrid Swenson  767-3295 sexy@wcu.edu
+Nick El         947-4428 cents@money.com
+John Blaylock   742-3427 jbk@ix.netcom.com
+Cathy Jablonsky 837-9846 chatty@phone.edu
+David Goldstein 987-1234 dgold@udel.edu
+Al Einstein     495-8340 albie@princeton.edu
+Too Cute        759-3954 toocute@foryou.edu
+Cynthia Reed    464-0991 creed@ix.netcom.com
+Jake Blaylock   742-2957 jake@ix.netcom.com
+Rose Bud        873-2419 flower@garden.com
+Susan Strauss   436-6492 ss@gastapo.com
+Ruth Goldstein  737-4567 goldstei@udel.edu
+Donald Duck     919-3376 duckie@disney.com
+Jamie Gutierrez 834-9988 jamie@aol.com
+> a.out
+Enter the name of the first file: camp	ain gn-file1
+Enter the name of the second file: campaign-file2
+Enter a new file name to write to: campai      results1
+results1 created sucessfully!
+> cat results1
+Big Attitude         215-3998  whatsit@toya.com
+Jamal Baddoura       987-6543  baddoura@udel.edu
+Jake Blaylock        742-2957  jake@ix.netcom.com
+John Blaylock        742-3427  jbk@ix.netcom.com
+Horace Blythe        641-1093  horse@yeeha.edu
+Tycho Brahe          462-9531  goldnose@nordita.dk
+Rose Bud             873-2419  flower@garden.com
+Arthur Cater         343-4591  arthur@prodigy.com
+Rhea Concade         414-8006  rconcade@psu.edu
+Megan Cross          555-3475  mcross@torture.com
+Too Cute             759-3954  toocute@foryou.edu
+Alan Dixie           348-4630  rancher@psu.edu
+Jane Doe             443-7634  whoami2@unknown.edu
+John Doe             398-4372  whoami@unknown.edu
+Owen Drumlang        364-8038  drummer@udel.edu
+Daisy Duck           396-1212  daisy@disney.com
+Donald Duck          919-3376  duckie@disney.com
+Al Einstein          495-8340  albie@princeton.edu
+Daphne Einstein      454-9810  brain@leland.stanford.edu
+Nick El              947-4428  cents@money.com
+Geoffrey Frank       396-2734  geo@prodigy.com
+David Goldstein      987-1234  dgold@udel.edu
+Ruth Goldstein       737-4567  goldstei@udel.edu
+Jamie Gutierrez      834-9988  jamie@aol.com
+Wayne Harris         743-2356  harris@leland.stanford.edu
+Karol Henderson      542-1244  khend@compuserve.com
+Cathy Jablonsky      837-9846  chatty@phone.edu
+Blue Jeans           599-0201  bluejean@pants.com
+George King          932-7745  thethird@madman.com
+Forget Me            676-3369  forgetme@not.drew.edu
+Suzy Que             650-2464  printer@udel.edu
+Cynthia Reed         464-0991  creed@ix.netcom.com
+Denise Reynolds      722-2032  deniser@ix.netcom.com
+Mike Rophone         496-5432  volume@sound.com
+Francis Smith        505-0933  frank@hotmail.com
+Pat Smith            493-5223  androgony@snl.com
+Susan Strauss        436-6492  ss@gastapo.com
+Ingrid Swenson       767-3295  sexy@wcu.edu
+Erin Weiss           395-8321  eweiss@ix.netcom.com
+Guess Who            459-9810  itsme@ghost.spook
+> cat test
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Erin Karnik 466-8574 ekarnik@aol.com
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Phil Allen 466-4282 phatphil18@hotmail.com
+Paul Gazzillo 882-0890 pgazz@interserv.com
+> cat test2
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Louis Dorio 737-7980 argyle909@aol.com
+> a.out
+Enter the name of the first file: test
+Enter the name of the second file: test2
+Enter a new file name to write to: results2
+results2 created sucessfully!
+> cat results2
+Phil Allen           466-4282  phatphil18@hotmail.com
+Louis Dorio          737-7980  argyle909@aol.com
+Paul Gazzillo        882-0890  pgazz@interserv.com
+Erin Karnik          466-8574  ekarnik@aol.com
+Jamie Orlando        466-3227  orlandoj@udel.edu
+> cat blank
+> cat blank2
+> a.out
+Enter the name of the first file: blank
+Enter the name of the second file: blank2
+Enter a new file name to write to: results3
+results3 created sucessfully!
+> cat results3
+No data.
+> a.out
+Enter the name of the first file: campaign-fiel  lk e1
+Enter the name of the second file: blank
+Enter a new file name to write to: results4
+results4 created sucessfully!
+> cat results4
+Big Attitude         215-3998  whatsit@toya.com
+Jamal Baddoura       987-6543  baddoura@udel.edu
+Tycho Brahe          462-9531  goldnose@nordita.dk
+Arthur Cater         343-4591  arthur@prodigy.com
+Rhea Concade         414-8006  rconcade@psu.edu
+Megan Cross          555-3475  mcross@torture.com
+Too Cute             759-3954  toocute@foryou.edu
+Alan Dixie           348-4630  rancher@psu.edu
+Jane Doe             443-7634  whoami2@unknown.edu
+John Doe             398-4372  whoami@unknown.edu
+Owen Drumlang        364-8038  drummer@udel.edu
+Daisy Duck           396-1212  daisy@disney.com
+Daphne Einstein      454-9810  brain@leland.stanford.edu
+Geoffrey Frank       396-2734  geo@prodigy.com
+David Goldstein      987-1234  dgold@udel.edu
+Ruth Goldstein       737-4567  goldstei@udel.edu
+Jamie Gutierrez      834-9988  jamie@aol.com
+Wayne Harris         743-2356  harris@leland.stanford.edu
+Karol Henderson      542-1244  khend@compuserve.com
+Blue Jeans           599-0201  bluejean@pants.com
+George King          932-7745  thethird@madman.com
+Forget Me            676-3369  forgetme@not.drew.edu
+Suzy Que             650-2464  printer@udel.edu
+Cynthia Reed         464-0991  creed@ix.netcom.com
+Denise Reynolds      722-2032  deniser@ix.netcom.com
+Mike Rophone         496-5432  volume@sound.com
+Pat Smith            493-5223  androgony@snl.com
+Erin Weiss           395-8321  eweiss@ix.netcom.com
+Guess Who            459-9810  itsme@ghost.spook
+> cat one-record1
+Jamie Orlando 466-3227 orlandoj@udel.edu
+> cat one-record2
+Phil Allen 466-4282 phatphil18@hotmail.com
+> a.out
+Enter the name of the first file: one-record1
+Enter the name of the second file: one-record2
+Enter a new file name to write to: results5
+results5 created sucessfully!
+> cat results5
+Phil Allen           466-4282  phatphil18@hotmail.com
+Jamie Orlando        466-3227  orlandoj@udel.edu
+> cat repear[Kt1
+cat: cannot open repeat1
+> cat repeat
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Jamie Orlando 466-3227 orlandoj@udel.edu
+Jamie Orlando 466-3227 orlandoj@udel.edu
+> cat repeat2
+Jamie Orlando 466-3227 orlandoj@udel.edu
+> a.out
+Enter the name of the first file: rpea   epear t
+Enter the name of the second file: repeat2
+Enter a new file name to write to: result6
+result6 created sucessfully!
+> cat results[K6
+Jamie Orlando        466-3227  orlandoj@udel.edu
+> a.out
+Enter the name of the first file: campaign-file1
+Enter the name of the second file: doesn' texist
+doesntexist does not exist.  Please type a new name, or 'q' to quit: q
+Program aborted.
+> a.out
+Enter the name of the first file: doesntexist1
+Enter the name of the second file: doesntexist2
+doesntexist1 does not exist.  Please type a new name, or 'q' to quit: stilldoesntexist
+stilldoesntexist does not exist.  Please type a new name, or 'q' to quit: test
+doesntexist2 does not exist.  Please type a new name, or 'q' to quit: stilldontexist
+stilldontexist does not exist.  Please type a new name, or 'q' to quit: test2
+Enter a new file name to write to: results7
+results7 created sucessfully!
+> cat reu[Ksults7
+Phil Allen           466-4282  phatphil18@hotmail.com
+Louis Dorio          737-7980  argyle909@aol.com
+Paul Gazzillo        882-0890  pgazz@interserv.com
+Erin Karnik          466-8574  ekarnik@aol.com
+Jamie Orlando        466-3227  orlandoj@udel.edu
+> exit
+> exit
+
+script done on Mon Nov 15 10:39:05 1999

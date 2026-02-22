@@ -1,0 +1,92 @@
+Short typescript for Project #2
+
+
+Script started on Wed Apr 10 16:05:18 2002
+%make clean
+rm -rf sh.o get_path.o mysh
+%make
+cc -g -c sh.c
+cc -g -c get_path.c
+cc -g  -DHAVE_KSTAT -lkstat -lpthread main.c sh.o get_path.o -o mysh
+%mysh
+  [/home/usra/d1/53758/361/proj2]> cd ..
+Running built-in cd
+
+  [/home/usra/d1/53758/361]> cd test
+Running built-in cd
+
+  [/home/usra/d1/53758/361/test]> cc test.c
+Executing /opt/SUNWspro/bin/cc
+
+  [/home/usra/d1/53758/361/test]> a.out &
+AMPERSAND FOUND!
+
+  [/home/usra/d1/53758/361/test]> Executing ./a.out
+
+
+  [/home/usra/d1/53758/361/test]> 
+
+  [/home/usra/d1/53758/361/test]> cd ../proj2
+Running built-in cd
+
+  [/home/usra/d1/53758/361/proj2]> uptime
+Executing /usr/bin/uptime
+  4:06pm  up 34 day(s),  7:57,  187 users,  load average: 7.62, 7.47, 7.43
+
+  [/home/usra/d1/53758/361/proj2]> warnload 7
+Running built-in warnload
+
+Warning threshold set to 7.000000
+
+  [/home/usra/d1/53758/361/proj2]> 
+Warning load level is 9.340000
+
+
+  [/home/usra/d1/53758/361/proj2]> warnload 0
+Running built-in warnload
+Warnload terminating.
+
+  [/home/usra/d1/53758/361/proj2]> watchmail temp
+Running built-in watchmail
+
+Watchmail now watching: temp
+  [/home/usra/d1/53758/361/proj2]> watchmail temp2
+Running built-in watchmail
+
+Watchmail now watching: temp2
+  [/home/usra/d1/53758/361/proj2]> 
+You have new mail in temp2 at Wed Apr 10 16:07:34 2002
+
+
+You have new mail in temp at Wed Apr 10 16:07:39 2002
+
+watchmail temp2 off
+Running built-in watchmail
+Watchmail no longer watching temp2
+  [/home/usra/d1/53758/361/proj2]> 
+You have new mail in temp at Wed Apr 10 16:07:58 2002
+
+
+You have new mail in temp at Wed Apr 10 16:08:00 2002
+
+
+You have new mail in temp at Wed Apr 10 16:08:02 2002
+
+
+
+  [/home/usra/d1/53758/361/proj2]> watchmail temp off
+Running built-in watchmail
+Watchmail no longer watching temp
+  [/home/usra/d1/53758/361/proj2]> watchuser orlandoj
+Running built-in watchuser
+Watching user: orlandoj
+orlandoj has logged on pts/348!
+orlandoj has logged on pts/277!
+
+  [/home/usra/d1/53758/361/proj2]> exit
+Connection closed.
+
+%exit
+exit
+
+script done on Wed Apr 10 16:08:36 2002

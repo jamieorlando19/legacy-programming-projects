@@ -1,0 +1,435 @@
+Script started on Mon Dec 06 23:31:32 1999
+> cat coversheet
+
+              CIS 181 Programming Assignment
+
+
+        Assignment: Programming Project #4  
+
+        Programmer: Jamie Orlando
+        Login name: orlandoj
+
+
+
+
+                 
+    CORRECTNESS                        | Possible |  Grade  
+   ------------------------------------+----------+---------+
+        C:  Correct operation          |   35%    |         |
+       --------------------------------+----------+---------|
+        T:  Testing                    |   15%    |         |
+       --------------------------------+----------+---------|
+
+    CLARITY                                                 
+   ------------------------------------+----------+---------+
+        D:  Documentation              |   15%    |         |
+       --------------------------------+----------+---------+
+        M:  Class structure            |   10%    |         |
+       --------------------------------+----------+---------+
+        C:  Code structure             |   10%    |         |
+       --------------------------------+----------+---------+
+        N:  Naming                     |   10%    |         |
+       --------------------------------+----------+---------+
+        F:  Formatting                 |    5%    |         |
+       --------------------------------+----------+---------+
+                               TOTAL   |  100%    |         |
+                                       +----------+---------+
+
+> cat bankacct.h
+#ifndef BANKACCT_H
+#define BANKACCT_H
+
+#include<iostream.h>
+
+const int NAME_LEN = 20;
+struct Name
+{
+   char first[NAME_LEN + 1];
+   char last[NAME_LEN + 1];
+};
+
+class bankacct
+{
+      friend istream& operator>>(istream &, bankacct &);                  //Overloaded input operator   
+      friend ostream& operator<<(ostream &, const bankacct &);            //Overloaded output operator
+   public:
+      bankacct(const char * = "", const char * = "", int = 0, double = 0);//Constructor
+      Name getname() const;                                               //Name getter
+      int getacctno() const;                                              //Acct # getter
+      double getcurrentbal() const;                                       //Balance getter
+      void deposit(double);                                               //Deposits amount
+      double withdraw(double);                                            //Withdraw amount
+      void monthlyint(double);                                            //Calculates monthly interest
+   private:
+      Name name;
+      int acctno;
+      double balance;
+};
+
+#endif
+> cat bankacct.cc
+#include<iostream.h>
+#include<iomanip.h>
+#include<string.h>
+#include"bankacct.h"
+
+//Constructor----------------------------------------------------------
+
+bankacct::bankacct(const char *fn, const char *ln, int an, double bal)
+{
+   strcpy(name.first, fn);
+   strcpy(name.last, ln);
+   acctno = an;
+   balance = bal;
+}
+
+//Name getter----------------------------------------------------------
+
+Name bankacct::getname() const
+{return name;}
+
+//Acct # getter--------------------------------------------------------
+
+int bankacct::getacctno() const
+{return acctno;}
+
+//Balance getter------------------------------------------------------
+
+double bankacct::getcurrentbal() const
+{return balance;}
+
+//Deposit amount------------------------------------------------------
+
+void bankacct::deposit(double amt)
+{
+   if(amt >= 0)
+      balance += amt;
+}
+
+//Withdraw amount-----------------------------------------------------
+
+double bankacct::withdraw(double amt)
+{
+   if(amt >= 0 && amt <= balance)
+      balance -= amt;
+   else
+      amt = 0;
+
+   return amt;
+}
+
+//Calculates monthly interest-----------------------------------------
+
+void bankacct::monthlyint(double annualrate)
+{
+   double interest = (balance * annualrate) / 12;
+   balance += interest;   
+}
+
+//Overloaded input operator-------------------------------------------
+
+istream& operator>>(istream &input, bankacct &a)
+{
+   input >> a.name.first >> a.name.last >> a.acctno >> a.balance;
+   return input;
+}
+
+//Overloaded output operator------------------------------------------
+
+ostream& operator<<(ostream &output, const bankacct &a)
+{
+   output << setprecision(2) <<setiosflags(ios::fixed);
+   output << a.name.first << " " << a.name.last << " " << a.acctno << " " << a.balance;
+   return output;
+}
+> cat acctarray.h
+#ifndef ACCTARRAY_H
+#define ACCTARRAY_H
+
+#include"bankacct.h"
+
+class acctarray
+{
+      friend istream& operator>>(istream &, acctarray &);       //Overloaded input operator
+      friend ostream& operator<<(ostream &, const acctarray &); //Overloaded output operator
+   public:
+      acctarray(int = 10, double =  0.06);                      //Constructor
+      ~acctarray();                                             //Destructor
+      void processtransactionfile(char []);                     //Processes transaction file
+      void calcmonthlyint();                                    //Adds monthly interest
+      void sortbyname();                                        //Sorts by name
+      int namecmp(Name , Name );                                //Name compare
+      void sortbyacctno();                                      //Sorts by account number 
+   private:
+      bankacct *acct;
+      int noaccts, currentarraysize;
+      double annualinterestrate;
+      void addacct(const bankacct &);                           //Account adder
+};
+
+#endif
+> cat acctarray.cc
+#include<stream.h>
+#include<string.h>
+#include"bankacct.h"
+#include"acctarray.h"
+
+//Constructor-------------------------------------------------
+
+acctarray::acctarray(int size, double annintrt)
+{
+   currentarraysize = size;
+   annualinterestrate = annintrt;
+   acct = new bankacct[size];
+   noaccts = 0;
+}
+
+//Destructor-------------------------------------------------
+
+acctarray::~acctarray() {delete [] acct;}
+
+//Processes Transaction File---------------------------------
+
+void acctarray::processtransactionfile(char filename[])
+{
+   ifstream fin(filename);
+   char choice[9];
+   int acno;
+   double amt;
+
+   while(fin >> choice >> acno >> amt)
+   {
+      for(int a = 0; acct[a].getacctno() != acno; ++a);
+
+      if(strcmp(choice, "deposit") == 0)
+         acct[a].deposit(amt);
+      else
+         acct[a].withdraw(amt);
+   }
+}
+
+//Adds monthly interest--------------------------------------
+
+void acctarray::calcmonthlyint()
+{
+   for(int q = 0; q < noaccts; ++q)
+      acct[q].monthlyint(annualinterestrate);
+}
+
+//Swap function (independent)--------------------------------
+
+void swap(bankacct &a, bankacct &b) {bankacct t = a; a = b; b = t;}
+
+//Sort by name-----------------------------------------------
+
+void acctarray::sortbyname()
+{
+   int i, j, min;
+   for(i = 0; i < noaccts; ++i)
+   {
+      min = i;
+      for(j = i + 1; j < noaccts; ++j)
+         if(namecmp(acct[j].getname(), acct[min].getname()) < 0) min = j;
+
+      swap(acct[i], acct[min]);
+   }
+}
+
+//Name compare------------------------------------------------
+
+int acctarray::namecmp(Name name1, Name name2)
+{
+   if(strcmp(name1.last, name2.last) == 0)
+   {
+      if(strcmp(name1.first, name2.first) == 0)
+         return 0;
+      else
+         return strcmp(name1.first, name2.first); 
+   }
+   else
+      return strcmp(name1.last, name2.last);
+}
+
+//Sort by account number-------------------------------------
+
+void acctarray::sortbyacctno()
+{
+   int i, j, min;
+   for(i = 0; i <noaccts; ++i)
+   {
+      min = i;
+      for(j = i + 1; j < noaccts; ++j)
+         if(acct[j].getacctno() < acct[min].getacctno()) min = j;
+ 
+      swap(acct[i], acct[min]);
+   }   
+}
+
+//Account Adder----------------------------------------------
+
+void acctarray::addacct(const bankacct &a)
+{
+   if(noaccts == currentarraysize)
+   {
+      bankacct *newacct;
+      newacct = new bankacct[currentarraysize + 10];
+     
+      for(int p = 0; p < currentarraysize; ++p)
+         newacct[p] = acct[p];
+
+      delete [] acct;
+      acct = newacct;
+      currentarraysize += 10;
+   }
+
+   acct[noaccts] = a;
+   ++noaccts;
+}
+
+//Overloaded input operator----------------------------------
+
+istream& operator>>(istream &input, acctarray &a)
+{
+   char dummy[25];
+   input >> dummy >> dummy;
+   input >> a.annualinterestrate;
+   input >> dummy;
+   a.annualinterestrate *= .01;
+   
+   bankacct nextacct;
+
+   while(input >> nextacct)
+      a.addacct(nextacct);
+
+   return input;
+}
+
+//Overloaded output operator---------------------------------
+
+ostream& operator<<(ostream &output, const acctarray &a)
+{
+   for(int w = 0; w < a.noaccts; ++w)
+      output << a.acct[w] << endl;
+
+   return output;
+}
+> cat main.cc
+#include<stream.h>
+#include"acctarray.h"
+
+main()
+{
+   ifstream fin1("atm-acct-data"), fin2("passbook-acct-data");
+   acctarray atm, passbook;
+
+   cout << "ATM" << endl;
+   fin1 >> atm;
+   cout << atm << endl;
+   atm.processtransactionfile("atm-transactions");
+   atm.calcmonthlyint();
+   atm.sortbyname();
+   cout << atm << endl;
+   atm.sortbyacctno();
+   cout << atm << endl << endl;
+   cout << "PASSBOOK" << endl;
+   fin2 >> passbook;
+   cout << passbook << endl;
+   passbook.processtransactionfile("passbook-transactions");
+   passbook.calcmonthlyint();
+   passbook.sortbyname();
+   cout << passbook << endl;
+   passbook.sortbyacctno();
+   cout << passbook;
+}
+> CC -compat *.cc
+acctarray.cc:
+bankacct.cc:
+main.cc:
+> a.out
+ATM
+Michael Jackson 102 50987.65
+Jessie Jackson 100 10236.66
+Cee Plusplus 103 10.01
+Woo-Jong Kim 101 5555.44
+Alan Turing 105 1011.01
+William Gates 107 9999999999.99
+Cee Minusminus 104 0.00
+Donald Knuth 106 76543.21
+
+William Gates 107 10029166666.66
+Jessie Jackson 100 10336.41
+Michael Jackson 102 51036.06
+Woo-Jong Kim 101 5571.64
+Donald Knuth 106 76766.46
+Cee Minusminus 104 0.00
+Cee Plusplus 103 10.04
+Alan Turing 105 1013.96
+
+Jessie Jackson 100 10336.41
+Woo-Jong Kim 101 5571.64
+Michael Jackson 102 51036.06
+Cee Plusplus 103 10.04
+Cee Minusminus 104 0.00
+Alan Turing 105 1013.96
+Donald Knuth 106 76766.46
+William Gates 107 10029166666.66
+
+
+PASSBOOK
+Jamie Johnson 110 0.00
+Charlie Baker 111 0.00
+Johann Johnnsson 112 1000.00
+Sam Smith 108 100.00
+Jill Jones 109 155.15
+Carie Carey 113 0.00
+Hortense Haggerty 115 55.50
+Jamal Baddoura 116 515.23
+Mary Bronstein 117 777.77
+Claude Marche 118 123.45
+Chih-Ping Hsu 119 987.65
+Giuseppe Attardi 121 222.22
+Charles Leedham-Green 122 444.44
+Jean Gallier 124 888.88
+Kazuhiro Fuchi 127 1616.16
+Maurice Mignotte 120 1000.00
+Shirley Smithwell 114 0.00
+
+Giuseppe Attardi 121 222.68
+Jamal Baddoura 116 516.30
+Charlie Baker 111 0.00
+Mary Bronstein 117 779.39
+Carie Carey 113 0.00
+Kazuhiro Fuchi 127 1619.53
+Jean Gallier 124 890.73
+Hortense Haggerty 115 55.62
+Chih-Ping Hsu 119 989.71
+Johann Johnnsson 112 1002.08
+Jamie Johnson 110 0.00
+Jill Jones 109 155.47
+Charles Leedham-Green 122 445.37
+Claude Marche 118 123.71
+Maurice Mignotte 120 1002.08
+Sam Smith 108 200.42
+Shirley Smithwell 114 200.62
+
+Sam Smith 108 200.42
+Jill Jones 109 155.47
+Jamie Johnson 110 0.00
+Charlie Baker 111 0.00
+Johann Johnnsson 112 1002.08
+Carie Carey 113 0.00
+Shirley Smithwell 114 200.62
+Hortense Haggerty 115 55.62
+Jamal Baddoura 116 516.30
+Mary Bronstein 117 779.39
+Claude Marche 118 123.71
+Chih-Ping Hsu 119 989.71
+Maurice Mignotte 120 1002.08
+Giuseppe Attardi 121 222.68
+Charles Leedham-Green 122 445.37
+Jean Gallier 124 890.73
+Kazuhiro Fuchi 127 1619.53
+> exit
+> exit
+
+script done on Mon Dec 06 23:32:36 1999

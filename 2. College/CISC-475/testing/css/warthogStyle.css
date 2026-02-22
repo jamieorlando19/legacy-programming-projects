@@ -1,0 +1,107 @@
+<!-- 	stylesheet for cisc 475 team warthog
+   	Author: Christopher Cali
+	Version: 1.0.0
+	Date: 3/30/03
+-->
+
+<STYLE TYPE="text/css">
+<!--
+/*********** General ***********/
+BODY { background: #A96E34; 
+       margin-left: 5% ;
+       margin-right: 5% ;
+       font-family: Tahoma, Verdana, Arial;
+}
+
+SMALL { font-family: Tahoma, Verdana, Arial;
+	font-size: 10px;
+}
+
+/************ links *************/
+A:link { font-family: Tahoma, Verdana, Arial;
+	 color: 440000;
+	 font-size: 12px;
+	 font-weight: bold }
+A:visited { color: blue }
+A:hover { color: purple }
+A:active { color: red }
+
+.no_underline { text-decoration: none }
+/************ titles *************/
+H1 { color: #000000;
+     font-size: 215%
+}
+H2 { color: #000000;
+     font-size: 120%
+}
+H3 { color: #000000;
+     font-size: 100%
+}
+
+/************* lists *************/
+UL { margin-top: 0;
+     border-top-width: 0;
+     padding-top: 0
+}
+UL.square { list-style-type: square }
+
+/******* pre-formatted text *******/
+PRE { font-size: 95%;
+}
+CODE {  font-family: courier;
+}
+
+/************ tables ***************/
+TABLE.center { margin-left: auto;
+	       margin-right: auto;
+	       border-collapse: seperate;
+	       empty-cells: show
+}
+
+TH { background: #EF8429;
+     font-size: 105%;
+     font-family: Tahoma, Verdana, Arial;
+}
+/************** classes **************/
+.centered { text-align: center }
+.light_orange { background: #FFAD00 }
+.input_box {    font-family:Tahoma,Verdana,Arial;
+		font-size:11px;
+		color: black;
+		border-left-style: solid;
+		border-left-width: 1px;
+		border-left-color: 440000;
+
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: 440000;
+
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-top-color: 440000;
+
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-right-color: 440000;	}		
+.submit_button {background: #FFFFFF;
+		font-family:Tahoma,Verdana,Arial;
+                font-size:18px;
+                color: black;
+                border-left-style: solid;
+                border-left-width: 1px;
+                border-left-color: 440000;
+
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                border-bottom-color: 440000;
+
+                border-top-style: solid;
+                border-top-width: 1px;
+                border-top-color: 440000;
+
+                border-right-style: solid;
+                border-right-width: 1px;
+                border-right-color: 440000;     }
+
+-->
+</STYLE>

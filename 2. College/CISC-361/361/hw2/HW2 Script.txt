@@ -1,0 +1,43 @@
+Script started on Tue Mar 26 11:53:41 2002
+%cat tally.c
+#include<stdio.h>
+#include<pthread.h>
+
+const int n = 50;
+int tally;
+
+void *total(void *);
+
+int main()
+{
+  pthread_t tid1, tid2, tid3, tid4, tid5, tid6;
+  tally = 0;
+  pthread_create(&tid1, NULL, total, "Thread1");
+  pthread_create(&tid2, NULL, total, "Thread2");
+  pthread_create(&tid3, NULL, total, "Thread3");
+  pthread_create(&tid4, NULL, total, "Thread4");
+  pthread_create(&tid5, NULL, total, "Thread5"); 
+  pthread_create(&tid6, NULL, total, "Thread6"); 
+ 
+
+  printf("Tally = %d \n", tally);
+
+  return 0;
+}
+
+void *total(void *msg)
+{
+  int count;
+  for(count = 1; count <= n; count++)
+  { tally++; }
+}
+
+%cc tally.c -lpthread
+%a.out
+Tally = 250 
+%quit
+quit: Command not found.
+%exit
+exit
+
+script done on Tue Mar 26 11:54:05 2002

@@ -1,0 +1,21 @@
+Kalim Oldziey, 
+Homework#8: Questions 2a, 3
+
+2a.)
+This call, when executed, takes the first element of
+tty-stream, (read), and executes it, which then awaits
+input from keyboard. When this input arrives, it makes
+it the next element of the stream, with delay being
+another call to tty-stream. Then stream-map squares that
+keyboard input, and stream-print-n displays it, and then calls
+itself with the stream-cdr of that stream. This forces the
+function tty-stream to request another input from keyboard,
+which then gets squared by stream-map, and displayed by the 
+stream-print-n function in turn... this continues until
+ten elements have been displayed, at which point stream-print-n
+quits out, without allowing any more of the delays on the stream
+to be forced into execution.
+
+3.) On an infinite stream, Louis Reasoner's suggestion will cause the
+program to simply run forever. The way the code is worked in problem 4
+will cause it to delay correctly.

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.1_02" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.ClassDiagramGraph"> 
+  <void method="addNode"> 
+   <object id="ClassNode0" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- bandName: Text
+  String userName;
+  Container contentPane;   // the applet&apos;s content pane
+  String[] userList; 
+Socket s;
+  ObjectOutputStream out;
+  ObjectInputStream in;
+
+-&gt; need the swing stuff?</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>init()
+start()
+-&gt;how the hell do you diagram inner classes?
+-&gt;anonymous inner classes?</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ChatClient</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>430.0</double> 
+    <double>0.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode1" class="com.horstmann.violet.ClassNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ main()</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ChatServer</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>380.0</double> 
+    <double>290.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode2" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>+ SITE: Text {frozen}
++ PORT: Text {frozen}</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ChatServerIP</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>90.0</double> 
+    <double>280.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode3" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- username: Text 
+   private String bandname;
+   private ObjectInputStream input; 
+   private ObjectOutputStream output;
+   private ChatServerUsers userList; </string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ &lt;&lt;constructor&gt;&gt; ChatUserConnection(s: Socket, u: ChatServerUsers)
++ run()
++ getUsersInRoom
++ sendToClient(stoc: ServertoClient)
++ getUser(): Txt 
+  public String getBand() 
+   public ObjectInputStream getInputStream() 
+   public ObjectOutputStream getOutputStream() </string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ChatUserConnection
+</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>750.0</double> 
+    <double>310.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode4" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>+ MESSAGE = 1 {frozen}
++ LOGOFF = 2 {frozen}
+- message: Text
+- action: Integer</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ &lt;&lt;constructor&gt;&gt;ClienttoServer(m: Text, a: Integer) 
++ getMessage(): Text 
++ isMessage(): Bool
++ isLogoff(): Bool</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ClienttoServer</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>800.0</double> 
+    <double>40.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode5" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>+ MESSAGE = 1 {frozen}
++ LOGON = 2 {frozen}
++ LOGOFF = 3 {frozen}
+- userName: Text
+- message: Text
+- action: Integer</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ &lt;&lt;constructor&gt;&gt;ServertoClient(u: Text, m: Text, a: Integer)
++ getUserName(): Tex
++ getMessage(): Text
++ isMessage(): Bool
++ sLogon(): Bool
++ isLogoff(): Bool</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ServertoClient</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>10.0</double> 
+    <double>10.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode6" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>- users: HashTable</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ &lt;&lt;constructor&gt;&gt; ChatServerUsers
++ sendMessage(message: ServertoClient, bandname: Text)
++ usersInRoom(bandname: Text) : HashTable
++ removeUser(bandname: Text, username:Text) : Bool
++ addUser(bandname: Text, username: Text, listener: ChatUserConnection): Bool  
+</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>ChatServerUsers</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>20.0</double> 
+    <double>470.0</double> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>createSocket()</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>0...*</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode0"/> 
+   <object idref="ClassNode1"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>0...*</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>&lt;&lt;creates&gt;&gt;</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode1"/> 
+   <object idref="ClassNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>0...*</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>&lt;&lt;creates&gt;&gt;</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode0"/> 
+   <object idref="ClassNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>0...*</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>sendMessage(message: ClientoServer)</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode0"/> 
+   <object idref="ClassNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>0...*</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>&lt;&lt;creates&gt;&gt;</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode3"/> 
+   <object idref="ClassNode5"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>0...*</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>access()</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode6"/> 
+   <object idref="ClassNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>&lt;&lt;creates&gt;&gt;</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode1"/> 
+   <object idref="ClassNode6"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>0...*</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>sendMessage()</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode6"/> 
+   <object idref="ClassNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>sendToClient(ServertoClient)</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode3"/> 
+   <object idref="ClassNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>uses</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode0"/> 
+   <object idref="ClassNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>uses</string> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode1"/> 
+   <object idref="ClassNode2"/> 
+  </void> 
+ </object> 
+</java> 

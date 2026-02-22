@@ -1,0 +1,14 @@
+Homeword 2, excersize 7:
+When this function is used, it runs an extremely resource intensive endless loop of function 
+calls.
+
+i.e.
+(factorial n)
+(new-if (= n 1) 1 (* n (factorial (- n 1)))))
+(new-if (= n 1) 1 (* n (new-if (= n 1) 1 (*n (factorial (-n 1))))))
+(new-if (= n 1) 1 (* n (new-if (= n 1) 1 (*n (new-if (= n 1) 1 (*n (factorial (-n 1))))))))
+Each call to new-if calls factorial, before new-if checks to see if n is indeed
+equal to one. And each new call to factorial spawns another call to new-if, which
+spawns another call to factorial, all without ever actually running new-if, since
+the functions call each other into infinity...
+ 

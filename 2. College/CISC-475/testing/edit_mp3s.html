@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Upload/Delete MP3s</title>
+<link type="text/css" rel="stylesheet" href="css/warthogStyle.css">
+<script type="text/javascript">
+
+function verifyupload(formnum) {
+  var mp3name = document.forms[formnum].mp3.value
+  var mp3len=mp3name.length
+  var SubmitOK="True"
+
+  if(mp3len>=5) {
+    var mp3ext=mp3name.substring(mp3len - 4, mp3len)
+    var mp3extformat=mp3ext.toLowerCase()
+    if(mp3extformat!=".mp3") {
+      SubmitOK="False"
+    }
+  }
+  else {
+    SubmitOK="False"
+  }
+      
+  if(SubmitOK=="False") {
+    alert("Invalid MP3 file!")
+    return false
+  }
+  else { 
+    alert("Click OK, and please be patient while your file uploads!")
+    return true
+  }
+}
+
+</script>
+
+</head>
+<body>
+<center>
+<h1>Upload/Delete MP3s</h1>
+<br>
+<table cellspacing="5">
+  <tr>
+    <td valign="top">
+      <form name="mp3form0" method="post" action="servlet/requestupload" enctype="multipart/form-data" onsubmit="return verifyupload(0)">
+        <font size="5"><b>1</b></font>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="mp3" type="file">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="upload" type="submit" value="Upload MP3" class="submit_button">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"> 
+      <form name="mp3form1" method="post" action="servlet/requestupload" enctype="multipart/form-data" onsubmit="return verifyupload(1)">
+        <font size="5"><b>2</b></font>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="mp3" type="file">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="upload" type="submit" value="Upload MP3" class="submit_button">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"> 
+      <form name="mp3form2" method="post" action="servlet/requestupload" enctype="multipart/form-data" onsubmit="return verifyupload(2)">
+        <font size="5"><b>3</b></font>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="mp3" type="file">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="upload" type="submit" value="Upload MP3" class="submit_button">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"> 
+      <form name="mp3form3" method="post" action="servlet/requestupload" enctype="multipart/form-data" onsubmit="return verifyupload(3)">
+        <font size="5"><b>4</b></font>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="mp3" type="file">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="upload" type="submit" value="Upload MP3" class="submit_button">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top"> 
+      <form name="mp3form4" method="post" action="servlet/requestupload" enctype="multipart/form-data" onsubmit="return verifyupload(4)">
+        <font size="5"><b>5</b></font>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="mp3" type="file">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="upload" type="submit" value="Upload MP3" class="submit_button">
+      </form>
+    </td>
+  </tr>
+
+</table>
+  <i>Each MP3 file must be smaller than 5MB!</i>
+</center>
+</body>
+</html>

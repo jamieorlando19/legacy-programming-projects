@@ -1,0 +1,50 @@
+Script started on Fri Feb 23 03:00:41 2001
+%javac *.java
+%java Bench
+***Employee Test***
+Name: Joe Average
+Salary: 30000.0
+Salary w/ Raise: 31710.0
+Hire Day: Wed May 06 00:00:00 EDT 1998
+
+***Manager Test***
+Name: Joe Hot-Shot
+Salary: 70000.0
+Salary w/ Raise: 74900.0
+Salary w/ Bonus: 77900.0
+Hire Day: Sat Apr 13 00:00:00 EDT 1985
+
+***Engineer Test***
+Name: Joe Geek P.E.
+Salary: 60000.0
+Salary w/ Raise: 61800.0
+Hire Day: Sat Jan 23 00:00:00 EST 1988
+
+***Senior Engineer Test***
+Name: Joe Mondo-Geekus P.E.
+Salary: 100000.0
+Salary w/ Raise: 109900.0
+Salary w/ Bonus: 114900.0
+Hire Day: Mon Feb 11 00:00:00 EST 1980
+
+***Executive***
+Name: Joe Important
+Salary: 150000.0
+Salary w/ Raise: 180000.0
+Salary w/ Bonus: 190000.0
+Health Plan: Pompous Inc.
+Stock Options: 30%
+Hire Day: Sat Oct 10 00:00:00 EDT 1981
+
+***Secretary***
+Name: Joe Busy
+Salary: 30000.0
+Salary w/ Raise: 30900.0
+Health Plan: Mediocre Health Inc.
+Hire Day: Thu May 02 00:00:00 EDT 1991
+%quit
+quit: Command not found.
+%exit
+exit
+
+script done on Fri Feb 23 03:01:05 2001

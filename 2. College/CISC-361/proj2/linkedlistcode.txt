@@ -1,0 +1,14 @@
+    tempmailptr = mailheadpointer;
+    while((tempmailptr->thefilename) != NULL)
+    { tempmailptr = tempmailptr->next; }
+    
+    tempmailptr->thefilename = calloc(1, sizeof(char*));
+    memcpy(tempmailptr->thefilename, args[1], strlen(args[1]));
+    tempmailptr->next = calloc(1, sizeof(struct mailthreads*));    
+    
+    tempmailptr = mailheadpointer;
+    while(tempmailptr->thefilename != NULL)
+    { 
+      printf("pointer: %s\n", tempmailptr->thefilename);
+      tempmailptr = tempmailptr->next;
+    }

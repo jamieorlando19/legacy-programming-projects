@@ -1,0 +1,157 @@
+Script started on Mon Mar 05 15:41:27 2001
+%cat Assignment3.java 
+/**  Assignment3 object has only one method which takes an array
+     of Objects, and returns that array sorted (Objects must implement
+     the Comparable interface, or a ObjectIsNotComparableException will
+     be thrown.
+     @author Jamie Orlando 
+     @version 1.0
+     @since 1.0
+     @see <a href="http://udel.edu/~orlandoj">Jamie's Page</a>
+*/
+
+public class Assignment3
+{
+   /**
+      Sorts a list of comparable objects
+      @param initial_list, a list of Comparable Objects
+      @return a list of sorted Comparable Objects
+      @throws ObjectIsNotComparableException
+   */
+   public static Object[] sort(Object[] initial_list)
+      throws ObjectIsNotComparableException
+   {
+      if(!(initial_list[0] instanceof Comparable))
+         throw new ObjectIsNotComparableException();
+
+      Object list[] = (Object[])initial_list.clone();
+      
+      //Selection Sort Begin
+      int largest, position, current;
+      for(position = list.length - 1; position > 0; position--)
+      {
+         largest = 0;
+         for(current = 1; current <= position; current++)
+         {
+            if(((Comparable)list[largest]).compareTo(list[current]) < 0)      
+                largest = current;
+         } 
+         Object temp = list[largest];
+         list[largest] = list[position];
+         list[position] = temp;
+      }
+      //Selection Sort End
+
+      return list;
+   }
+}
+%cat ObjectIsNotComparableException.java 
+/** ObjectIsNotComparableException is called if an Object is not
+    comparable and the compareTo function is called on it.
+    @author Jamie Orlando
+    @version 1.0
+    @since 1.0
+    @see <a href="http://udel.edu/~orlandoj">Jamie's Page</a>
+*/
+public class ObjectIsNotComparableException extends RuntimeException
+{
+   /** Prints "whoops!" if this exception is called */
+   public ObjectIsNotComparableException()
+   {
+      System.out.println("whoops!");
+   }
+}
+%cat test.java a[K
+public class test
+{
+   public static void main(String[] args)
+   {
+      try
+      {
+         String[] a = {"g", "r", "a", "p", "e", "s"};
+         printArray(a);
+         printArray((String[])Assignment3.sort(a));
+
+         Integer[] b = {new Integer(1), new Integer(4), new Integer(2)};
+         printArray(b);
+         printArray((Integer[])Assignment3.sort(b));
+
+         Float[] c = {new Float(3.33), new Float (3.12), new Float (44),
+                      new Float(5.201), new Float(1.001)};
+         printArray(c);
+         printArray((Float[])Assignment3.sort(c));
+
+         //This segment will generate an exception and cause the program
+         //to terminate.
+         Bozo[] z = {new Bozo(41), new Bozo (11)};
+         printArray((Bozo[])Assignment3.sort(z));
+      }    
+      catch (ObjectIsNotComparableException exception)
+      {
+         exception.printStackTrace();
+      }
+   }
+
+   public static void printArray(Object[] a)
+   {
+      for(int i = 0; i < a.length; i++)
+         System.out.println(a[i]);
+      System.out.println();
+   }
+}
+%cat Bozo.java 
+public class Bozo
+{
+   public Bozo(int a)
+   {
+      Color = a;
+   }
+
+   private int Color;   
+}
+%javac *.java
+%java test
+g
+r
+a
+p
+e
+s
+
+a
+e
+g
+p
+r
+s
+
+1
+4
+2
+
+1
+2
+4
+
+3.33
+3.12
+44.0
+5.201
+1.001
+
+1.001
+3.12
+3.33
+5.201
+44.0
+
+whoops!
+ObjectIsNotComparableException
+	at Assignment3.sort(Assignment3.java, Compiled Code)
+	at test.main(test.java, Compiled Code)
+%quit
+quit: Command not found.
+%exit
+exit
+
+script done on Mon Mar 05 15:42:38 2001

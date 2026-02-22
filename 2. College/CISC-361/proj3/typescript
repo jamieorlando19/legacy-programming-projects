@@ -1,0 +1,376 @@
+Script started on Wed May 08 16:10:50 2002
+%make clean
+rm -rf sh.o get_path.o main.o ls_X.o a.out
+%make
+cc   -c  sh.c
+cc   -c  get_path.c
+cc   -c  ls_X.c
+cc -g  -DHAVE_KSTAT -lkstat -lpthread *.c
+get_path.c:
+ls_X.c:
+main.c:
+sh.c:
+%a.out
+  [/home/usra/d1/53758/361/proj3]> ls-X
+.:
+drwx------(700)     2   28653    3030       4096    May 08  16:11:14 2002  .
+drwx------(700)     6   28653    3710       4096    May 08  13:17:07 2002  ..
+-rw-------(600)     1   28653    3030       1010    May 04  13:53:48 2002  get_path.c
+-rw-------(600)     1   28653    3030        395    May 04  13:53:49 2002  get_path.h
+-rw-------(600)     1   28653    3030        506    May 08  15:00:29 2002  main.c
+-rw-------(600)     1   28653    3030      21937    May 08  15:02:06 2002  sh.c
+-rw-------(600)     1   28653    3030       1911    May 08  13:38:46 2002  sh.h
+-rw-------(600)     1   28653    3030          0    May 08  16:11:08 2002  typescript
+-rw-------(600)     1   28653    3030      73296    May 08  16:11:14 2002  sh.o
+-rw-------(600)     1   28653    3030      14548    May 08  16:11:13 2002  get_path.o
+-rw-------(600)     1   28653    3030      25276    May 08  16:11:14 2002  ls_X.o
+-rw-------(600)     1   28653    3030      20196    May 08  16:11:14 2002  main.o
+-rw-------(600)     1   28653    3030       3923    May 08  15:07:11 2002  ls_X.c
+-rw-------(600)     1   28653    3030        458    May 08  15:07:12 2002  ls_X.h
+-rw-------(600)     1   28653    3030        159    May 08  15:38:10 2002  Makefile
+-rwx------(700)     1   28653    3030       5640    May 08   1:04:55 2002  test-1+2
+-rwx------(700)     1   28653    3030      38496    May 08  16:11:14 2002  a.out
+-rw-------(600)     1   28653    3030        107    May 08  16:08:12 2002  a
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan
+total 504
+drwx------   2 28653    3030        4096 May  8 16:11 .
+drwx------   6 28653    3710        4096 May  8 13:17 ..
+-rw-------   1 28653    3030         159 May  8 15:38 Makefile
+-rw-------   1 28653    3030         107 May  8 16:08 a
+-rwx------   1 28653    3030       38496 May  8 16:11 a.out
+-rw-------   1 28653    3030        1010 May  4 13:53 get_path.c
+-rw-------   1 28653    3030         395 May  4 13:53 get_path.h
+-rw-------   1 28653    3030       14548 May  8 16:11 get_path.o
+-rw-------   1 28653    3030        3923 May  8 15:07 ls_X.c
+-rw-------   1 28653    3030         458 May  8 15:07 ls_X.h
+-rw-------   1 28653    3030       25276 May  8 16:11 ls_X.o
+-rw-------   1 28653    3030         506 May  8 15:00 main.c
+-rw-------   1 28653    3030       20196 May  8 16:11 main.o
+-rw-------   1 28653    3030       21937 May  8 15:02 sh.c
+-rw-------   1 28653    3030        1911 May  8 13:38 sh.h
+-rw-------   1 28653    3030       73296 May  8 16:11 sh.o
+-rwx------   1 28653    3030        5640 May  8 01:04 test-1+2
+-rw-------   1 28653    3030           0 May  8 16:11 typescript
+
+  [/home/usra/d1/53758/361/proj3]> ls-X . ..
+.:
+drwx------(700)     2   28653    3030       4096    May 08  16:11:14 2002  .
+drwx------(700)     6   28653    3710       4096    May 08  13:17:07 2002  ..
+-rw-------(600)     1   28653    3030       1010    May 04  13:53:48 2002  get_path.c
+-rw-------(600)     1   28653    3030        395    May 04  13:53:49 2002  get_path.h
+-rw-------(600)     1   28653    3030        506    May 08  15:00:29 2002  main.c
+-rw-------(600)     1   28653    3030      21937    May 08  15:02:06 2002  sh.c
+-rw-------(600)     1   28653    3030       1911    May 08  13:38:46 2002  sh.h
+-rw-------(600)     1   28653    3030          0    May 08  16:11:08 2002  typescript
+-rw-------(600)     1   28653    3030      73296    May 08  16:11:14 2002  sh.o
+-rw-------(600)     1   28653    3030      14548    May 08  16:11:13 2002  get_path.o
+-rw-------(600)     1   28653    3030      25276    May 08  16:11:14 2002  ls_X.o
+-rw-------(600)     1   28653    3030      20196    May 08  16:11:14 2002  main.o
+-rw-------(600)     1   28653    3030       3923    May 08  15:07:11 2002  ls_X.c
+-rw-------(600)     1   28653    3030        458    May 08  15:07:12 2002  ls_X.h
+-rw-------(600)     1   28653    3030        159    May 08  15:38:10 2002  Makefile
+-rwx------(700)     1   28653    3030       5640    May 08   1:04:55 2002  test-1+2
+-rwx------(700)     1   28653    3030      38496    May 08  16:11:14 2002  a.out
+-rw-------(600)     1   28653    3030        107    May 08  16:08:12 2002  a
+
+..:
+drwx------(700)     6   28653    3710       4096    May 08  13:17:07 2002  .
+drwx-----x(701)     7   28653    3710       4096    May 08  11:57:24 2002  ..
+drwx------(700)     2   28653    3030       4096    May 08  16:11:14 2002  proj3
+drwx------(700)     2   28653    3710       4096    Mar 26  11:59:24 2002  hw2
+drwx------(700)     2   28653    3710       4096    Mar 14  16:09:55 2002  proj1
+-rw-------(600)     1   28653    3710      19456    Mar 11  16:28:00 2002  JamieOrlando_proj1.tar
+drwx------(700)     2   28653    3710       4096    May 08  15:23:59 2002  proj2
+-rw-------(600)     1   28653    3710      25600    Apr 10  16:26:32 2002  JamieOrlando_proj2.tar
+
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan . ..
+.:
+total 504
+drwx------   2 28653    3030        4096 May  8 16:11 .
+drwx------   6 28653    3710        4096 May  8 13:17 ..
+-rw-------   1 28653    3030         159 May  8 15:38 Makefile
+-rw-------   1 28653    3030         107 May  8 16:08 a
+-rwx------   1 28653    3030       38496 May  8 16:11 a.out
+-rw-------   1 28653    3030        1010 May  4 13:53 get_path.c
+-rw-------   1 28653    3030         395 May  4 13:53 get_path.h
+-rw-------   1 28653    3030       14548 May  8 16:11 get_path.o
+-rw-------   1 28653    3030        3923 May  8 15:07 ls_X.c
+-rw-------   1 28653    3030         458 May  8 15:07 ls_X.h
+-rw-------   1 28653    3030       25276 May  8 16:11 ls_X.o
+-rw-------   1 28653    3030         506 May  8 15:00 main.c
+-rw-------   1 28653    3030       20196 May  8 16:11 main.o
+-rw-------   1 28653    3030       21937 May  8 15:02 sh.c
+-rw-------   1 28653    3030        1911 May  8 13:38 sh.h
+-rw-------   1 28653    3030       73296 May  8 16:11 sh.o
+-rwx------   1 28653    3030        5640 May  8 01:04 test-1+2
+-rw-------   1 28653    3030           0 May  8 16:11 typescript
+
+..:
+total 144
+drwx------   6 28653    3710        4096 May  8 13:17 .
+drwx-----x   7 28653    3710        4096 May  8 11:57 ..
+-rw-------   1 28653    3710       19456 Mar 11 16:28 JamieOrlando_proj1.tar
+-rw-------   1 28653    3710       25600 Apr 10 16:26 JamieOrlando_proj2.tar
+drwx------   2 28653    3710        4096 Mar 26 11:59 hw2
+drwx------   2 28653    3710        4096 Mar 14 16:09 proj1
+drwx------   2 28653    3710        4096 May  8 15:23 proj2
+drwx------   2 28653    3030        4096 May  8 16:11 proj3
+
+  [/home/usra/d1/53758/361/proj3]> ls-X /bin/ls /kernel
+-r-xr-xr-x(555)     1       0       2      19064    Jun 19  20:55:20 2001    /bin/ls
+
+/kernel:
+drwxr-xr-x(755)     9       0       3        512    Aug 17   9:53:48 2001  .
+drwxr-xr-x(755)    24       0       0       1024    Apr 13  13:37:27 2002  ..
+drwxr-xr-x(755)     3       0       3       2560    Mar 07   7:18:17 2002  drv
+drwxr-xr-x(755)     3       0       3        512    Aug 17   9:58:05 2001  exec
+drwxr-xr-x(755)     3       0       3        512    Aug 17  10:21:12 2001  fs
+drwxr-xr-x(755)     4       0       3       1024    Aug 17  10:22:57 2001  misc
+drwxr-xr-x(755)     3       0       3        512    Aug 17   9:58:05 2001  sched
+drwxr-xr-x(755)     3       0       3       1024    Aug 17  10:24:45 2001  strmod
+drwxr-xr-x(755)     3       0       3        512    Aug 17  10:01:07 2001  sys
+-rwxr-xr-x(755)     1       0       3    1673316    Jun 20  13:35:39 2001  genunix
+
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan /bin/ls /kernel
+-r-xr-xr-x   1 0        2          19064 Jun 19  2001 /bin/ls
+
+/kernel:
+total 3318
+drwxr-xr-x   9 0        3            512 Aug 17  2001 .
+drwxr-xr-x  24 0        0           1024 Apr 13 13:37 ..
+drwxr-xr-x   3 0        3           2560 Mar  7 07:18 drv
+drwxr-xr-x   3 0        3            512 Aug 17  2001 exec
+drwxr-xr-x   3 0        3            512 Aug 17  2001 fs
+-rwxr-xr-x   1 0        3        1673316 Jun 20  2001 genunix
+drwxr-xr-x   4 0        3           1024 Aug 17  2001 misc
+drwxr-xr-x   3 0        3            512 Aug 17  2001 sched
+drwxr-xr-x   3 0        3           1024 Aug 17  2001 strmod
+drwxr-xr-x   3 0        3            512 Aug 17  2001 sys
+
+  [/home/usra/d1/53758/361/proj3]> ls-X /dev/null /dev/rdsk/c0t6d0s0 /dev/dsk/c0t6d0s2
+crw-rw-rw-(666)     1       0       3    13,   2    May 08  16:11:12 2002    /dev/null
+
+crw-r-----(640)     1       0       3    32,  48    Aug 17  10:26:12 2001    /dev/rdsk/c0t6d0s0
+
+brw-r-----(640)     1       0       3    32,  50    Aug 17  10:26:12 2001    /dev/dsk/c0t6d0s2
+
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan /dev/null /dev/rdsk/c0t6d0s0 /dev/dsk/c0t6d0s2
+brw-r-----   1 0        3         32, 50 Aug 17  2001 /dev/dsk/c0t6d0s2
+crw-rw-rw-   1 0        3         13,  2 May  8 16:11 /dev/null
+crw-r-----   1 0        3         32, 48 Aug 17  2001 /dev/rdsk/c0t6d0s0
+
+  [/home/usra/d1/53758/361/proj3]> ls-X /etc/.syslog_door /etc/initpipe
+Drw-r--r--(644)     1       0       0          0    Mar 07   7:16:53 2002    /etc/.syslog_door
+
+prw-------(600)     1       0       0          0    May 08  16:11:43 2002    /etc/initpipe
+
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan /etc/.syslog_door /etc/initpipe
+Drw-r--r--   1 0        0              0 Mar  7 07:16 /etc/.syslog_door
+prw-------   1 0        0              0 May  8 16:11 /etc/initpipe
+
+  [/home/usra/d1/53758/361/proj3]> ls-X /bin/su
+-r-sr-xr-x(4555)     1       0       3      17880    Jun 19  18:14:12 2001    /bin/su
+
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan /bin/su
+-r-sr-xr-x   1 0        3          17880 Jun 19  2001 /bin/su
+
+  [/home/usra/d1/53758/361/proj3]> ls-X /bin/write	
+/bin/write	: Invalid path.
+
+
+  [/home/usra/d1/53758/361/proj3]> ls-X /bin/write
+-r-xr-sr-x(2555)     1       0       7      11484    Jun 19  18:19:33 2001    /bin/write
+
+
+  [/home/usra/d1/53758/361/proj3]> ls -Llan /bin/write
+-r-xr-sr-x   1 0        7          11484 Jun 19  2001 /bin/write
+
+  [/home/usra/d1/53758/361/proj3]> ./test-1+2 > a
+This is to standard error
+
+  [/home/usra/d1/53758/361/proj3]> cat a
+This is to standard output
+
+  [/home/usra/d1/53758/361/proj3]> ./test-1+2 >& a
+
+  [/home/usra/d1/53758/361/proj3]> cat a
+This is to standard error
+This is to standard output
+
+  [/home/usra/d1/53758/361/proj3]> ./test-1+2 >> a	^?^?     a
+This is to standard error
+
+  [/home/usra/d1/53758/361/proj3]> cat a
+This is to standard error
+This is to standard output
+This is to standard output
+
+  [/home/usra/d1/53758/361/proj3]> ./test-1+2 >>& a
+
+  [/home/usra/d1/53758/361/proj3]> cat a
+This is to standard error
+This is to standard output
+This is to standard output
+This is to standard error
+This is to standard output
+
+  [/home/usra/d1/53758/361/proj3]> echo hi > a
+
+  [/home/usra/d1/53758/361/proj3]> cat a
+hi
+
+  [/home/usra/d1/53758/361/proj3]> cat < a
+hi
+
+  [/home/usra/d1/53758/361/proj3]> grep main < main.c
+main.c
+int main( int argc, char **argv, char **envp )
+
+  [/home/usra/d1/53758/361/proj3]> noclobber
+Noclobber value set to: 1
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 > a
+File already exists!
+
+  [/home/usra/d1/53758/361/proj3]> rm a
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 > a
+This is to standard error
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >& a
+File already exists!
+
+  [/home/usra/d1/53758/361/proj3]> rm a
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >& a
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >> a
+This is to standard error
+
+  [/home/usra/d1/53758/361/proj3]> rm a
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >> a
+No such File!
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >>& a
+No such File!
+
+  [/home/usra/d1/53758/361/proj3]> ls > a
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >> a
+This is to standard error
+
+  [/home/usra/d1/53758/361/proj3]> test-1+2 >>& a
+
+  [/home/usra/d1/53758/361/proj3]> noclobber
+Noclobber value set to: 0
+
+  [/home/usra/d1/53758/361/proj3]> ls > a
+
+  [/home/usra/d1/53758/361/proj3]> cat a
+Makefile
+a
+a.out
+get_path.c
+get_path.h
+get_path.o
+ls_X.c
+ls_X.h
+ls_X.o
+main.c
+main.o
+sh.c
+sh.h
+sh.o
+test-1+2
+typescript
+
+  [/home/usra/d1/53758/361/proj3]> ls >> nosuchfile
+
+  [/home/usra/d1/53758/361/proj3]> cat nosuchfile
+Makefile
+a
+a.out
+get_path.c
+get_path.h
+get_path.o
+ls_X.c
+ls_X.h
+ls_X.o
+main.c
+main.o
+nosuchfile
+sh.c
+sh.h
+sh.o
+test-1+2
+typescript
+
+  [/home/usra/d1/53758/361/proj3]> pid
+10968
+
+  [/home/usra/d1/53758/361/proj3]> ls-X2
+.:
+drwx------(700)     2 orlandoj    2094       4096    May 08  16:15:21 2002  .
+drwx------(700)     6 orlandoj    4000       4096    May 08  13:17:07 2002  ..
+-rw-------(600)     1 orlandoj    2094       1010    May 04  13:53:48 2002  get_path.c
+-rw-------(600)     1 orlandoj    2094        395    May 04  13:53:49 2002  get_path.h
+-rw-------(600)     1 orlandoj    2094        506    May 08  15:00:29 2002  main.c
+-rw-------(600)     1 orlandoj    2094      21937    May 08  15:02:06 2002  sh.c
+-rw-------(600)     1 orlandoj    2094       1911    May 08  13:38:46 2002  sh.h
+-rw-------(600)     1 orlandoj    2094      16384    May 08  16:11:45 2002  typescript
+-rw-------(600)     1 orlandoj    2094      73296    May 08  16:11:14 2002  sh.o
+-rw-------(600)     1 orlandoj    2094      14548    May 08  16:11:13 2002  get_path.o
+-rw-------(600)     1 orlandoj    2094      25276    May 08  16:11:14 2002  ls_X.o
+-rw-------(600)     1 orlandoj    2094      20196    May 08  16:11:14 2002  main.o
+-rw-------(600)     1 orlandoj    2094       3923    May 08  15:07:11 2002  ls_X.c
+-rw-------(600)     1 orlandoj    2094        458    May 08  15:07:12 2002  ls_X.h
+-rw-------(600)     1 orlandoj    2094        159    May 08  15:38:10 2002  Makefile
+-rwx------(700)     1 orlandoj    2094       5640    May 08   1:04:55 2002  test-1+2
+-rwx------(700)     1 orlandoj    2094      38496    May 08  16:11:14 2002  a.out
+-rw-------(600)     1 orlandoj    2094        120    May 08  16:15:02 2002  a
+-rw-------(600)     1 orlandoj    2094        131    May 08  16:15:21 2002  nosuchfile
+
+
+  [/home/usra/d1/53758/361/proj3]> ls-X2 .
+.:
+drwx------(700)     2 orlandoj    2094       4096    May 08  16:15:21 2002  .
+drwx------(700)     6 orlandoj    4000       4096    May 08  13:17:07 2002  ..
+-rw-------(600)     1 orlandoj    2094       1010    May 04  13:53:48 2002  get_path.c
+-rw-------(600)     1 orlandoj    2094        395    May 04  13:53:49 2002  get_path.h
+-rw-------(600)     1 orlandoj    2094        506    May 08  15:00:29 2002  main.c
+-rw-------(600)     1 orlandoj    2094      21937    May 08  15:02:06 2002  sh.c
+-rw-------(600)     1 orlandoj    2094       1911    May 08  13:38:46 2002  sh.h
+-rw-------(600)     1 orlandoj    2094      24576    May 08  16:16:15 2002  typescript
+-rw-------(600)     1 orlandoj    2094      73296    May 08  16:11:14 2002  sh.o
+-rw-------(600)     1 orlandoj    2094      14548    May 08  16:11:13 2002  get_path.o
+-rw-------(600)     1 orlandoj    2094      25276    May 08  16:11:14 2002  ls_X.o
+-rw-------(600)     1 orlandoj    2094      20196    May 08  16:11:14 2002  main.o
+-rw-------(600)     1 orlandoj    2094       3923    May 08  15:07:11 2002  ls_X.c
+-rw-------(600)     1 orlandoj    2094        458    May 08  15:07:12 2002  ls_X.h
+-rw-------(600)     1 orlandoj    2094        159    May 08  15:38:10 2002  Makefile
+-rwx------(700)     1 orlandoj    2094       5640    May 08   1:04:55 2002  test-1+2
+-rwx------(700)     1 orlandoj    2094      38496    May 08  16:11:14 2002  a.out
+-rw-------(600)     1 orlandoj    2094        120    May 08  16:15:02 2002  a
+-rw-------(600)     1 orlandoj    2094        131    May 08  16:15:21 2002  nosuchfile
+
+
+  [/home/usra/d1/53758/361/proj3]> ls-X2 /dev/null
+crw-rw-rw-(666)     1    root     sys    13,   2    May 08  16:16:15 2002    /dev/null
+
+
+  [/home/usra/d1/53758/361/proj3]> exit
+Connection closed.
+
+
+%exit
+exit
+
+script done on Wed May 08 16:16:30 2002
+12 2002  ls_X.h

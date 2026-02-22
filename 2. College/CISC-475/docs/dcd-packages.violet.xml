@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.1_02" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.ClassDiagramGraph"> 
+  <void method="addNode"> 
+   <object id="PackageNode0" class="com.horstmann.violet.PackageNode"> 
+    <void method="addChild"> 
+     <object id="PackageNode1" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>jsps</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode0"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="name"> 
+     <string>com.warthog.presentation</string> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>20.0</double> 
+    <double>20.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>40.0</double> 
+    <double>50.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PackageNode2" class="com.horstmann.violet.PackageNode"> 
+    <void method="addChild"> 
+     <object id="PackageNode3" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warthog.application.contollers</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode2"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="name"> 
+     <string>com.warthog.application</string> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>300.0</double> 
+    <double>30.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PackageNode4" class="com.horstmann.violet.PackageNode"> 
+    <void method="addChild"> 
+     <object id="PackageNode5" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warthog.domain.chat</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode4"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="PackageNode6" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warthog.domain.sitecomponents</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode4"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="PackageNode7" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warthog.domain.message</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode4"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="PackageNode8" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warthog.domain.core</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode4"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="PackageNode9" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warhog.domain.message.corecomponents</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode4"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="name"> 
+     <string>com.warthog.domain</string> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>30.0</double> 
+    <double>170.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode5"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>40.0</double> 
+    <double>200.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode3"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>310.0</double> 
+    <double>60.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="PackageNode10" class="com.horstmann.violet.PackageNode"> 
+    <void method="addChild"> 
+     <object id="PackageNode11" class="com.horstmann.violet.PackageNode"> 
+      <void property="name"> 
+       <string>com.warthog.services.persist</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="PackageNode10"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="name"> 
+     <string>com.warthog.services</string> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>320.0</double> 
+    <double>400.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode11"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>340.0</double> 
+    <double>430.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode6"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>520.0</double> 
+    <double>200.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode7"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>270.0</double> 
+    <double>200.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode8"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>50.0</double> 
+    <double>290.0</double> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode9"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <double>540.0</double> 
+    <double>290.0</double> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="PackageNode1"/> 
+   <object idref="PackageNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="PackageNode3"/> 
+   <object idref="PackageNode5"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="PackageNode6"/> 
+   <object idref="PackageNode11"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="PackageNode7"/> 
+   <object idref="PackageNode10"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="PackageNode8"/> 
+   <object idref="PackageNode11"/> 
+  </void> 
+ </object> 
+</java> 

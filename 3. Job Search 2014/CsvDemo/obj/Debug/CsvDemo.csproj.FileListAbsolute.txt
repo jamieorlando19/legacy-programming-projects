@@ -1,0 +1,9 @@
+D:\JAMIE_PROJECTS\CsvDemo\bin\Debug\CsvDemo.exe.config
+D:\JAMIE_PROJECTS\CsvDemo\bin\Debug\CsvDemo.exe
+D:\JAMIE_PROJECTS\CsvDemo\bin\Debug\CsvDemo.pdb
+D:\JAMIE_PROJECTS\CsvDemo\obj\Debug\CsvDemo.csprojResolveAssemblyReference.cache
+D:\JAMIE_PROJECTS\CsvDemo\obj\Debug\CsvDemo.Properties.Resources.resources
+D:\JAMIE_PROJECTS\CsvDemo\obj\Debug\CsvDemo.csproj.GenerateResource.Cache
+D:\JAMIE_PROJECTS\CsvDemo\obj\Debug\CsvDemo.exe
+D:\JAMIE_PROJECTS\CsvDemo\obj\Debug\CsvDemo.pdb
+D:\JAMIE_PROJECTS\CsvDemo\obj\Debug\CsvDemo.Form1.resources

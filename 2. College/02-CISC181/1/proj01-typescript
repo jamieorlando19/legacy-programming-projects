@@ -1,0 +1,170 @@
+Script started on Fri Sep 24 14:42:52 1999
+> cat $CLASSHOME/programming-projs/coversheet
+
+              CIS 181 Programming Assignment
+
+
+        Assignment:  
+
+        Programmer:  
+        Login name:  
+
+
+
+
+                 
+    CORRECTNESS                        | Possible |  Grade  
+   ------------------------------------+----------+---------+
+        C:  Correct operation          |   35%    |         |
+       --------------------------------+----------+---------|
+        T:  Testing                    |   15%    |         |
+       --------------------------------+----------+---------|
+
+    CLARITY                                                 
+   ------------------------------------+----------+---------+
+        D:  Documentation              |   15%    |         |
+       --------------------------------+----------+---------+
+        M:  Class structure            |   10%    |         |
+       --------------------------------+----------+---------+
+        C:  Code structure             |   10%    |         |
+       --------------------------------+----------+---------+
+        N:  Naming                     |   10%    |         |
+       --------------------------------+----------+---------+
+        F:  Formatting                 |    5%    |         |
+       --------------------------------+----------+---------+
+                               TOTAL   |  100%    |         |
+                                       +----------+---------+
+
+> cat easter.cc
+//Jamie Orlando
+//CISC 181
+//Project #1
+//9/14/99
+
+//Desc: Computes the date of Easter from 1900 to 2099
+
+#include<iostream.h>
+
+int main()
+{
+   int first_year, last_year, day, a, b, c, d, e;
+   int march = 1;  //Boolean variable; indicates whether march or april
+   char run_again;
+
+   do
+   {
+      cout << "EASTER PROGRAM" << endl << "==============" << endl << endl
+           << "Enter the first year for which you desire to know the date of Easter (1900-2099): ";
+      cin >> first_year;
+      cout << "Enter the last year: ";
+      cin >> last_year;
+      if((first_year < 1900) || (first_year > 2099) || (last_year > 2099) || (last_year < 1900) || (first_year > last_year))
+      {
+        cerr << "Bad Input";
+      	return 0;
+      }
+      for(int year = first_year; year <= last_year; year++)
+      {
+         a = year % 19;
+         b = year % 4;
+         c = year % 7;
+         d = (19 * a + 24) % 30;
+         e = (2 * b + 4 * c + 6 * d + 5) % 7;
+         day = (22 + d + e);
+         if((year == 1954) || (year == 1981) || (year == 2049) || (year == 2076))
+            day -= 7;
+         if(day > 31)
+         {
+            day -= 31;
+            march = 0;
+         }
+         cout << "Easter in " << year << " is, Sunday, ";
+         if(march == 1)
+            cout << "March ";
+         else
+            cout << "April ";
+         cout << day << endl;
+            march = 1;
+      }
+      cout << "Would you like to run the program again? (y/n): ";
+      cin >> run_again;
+      cout << "\n\n\n\n";
+   }while((run_again == 'Y') || (run_again == 'y'));
+   cout << "by Jamie Orlando";
+
+   return 0;
+}
+> CC easter.cc
+> a.out
+EASTER PROGRAM
+==============
+
+Enter the first year for which you desire to know the date of Easter (1900-2099): 1980
+Enter the last year: 1989
+Easter in 1980 is, Sunday, April 6
+Easter in 1981 is, Sunday, April 19
+Easter in 1982 is, Sunday, April 11
+Easter in 1983 is, Sunday, April 3
+Easter in 1984 is, Sunday, April 22
+Easter in 1985 is, Sunday, April 7
+Easter in 1986 is, Sunday, March 30
+Easter in 1987 is, Sunday, April 19
+Easter in 1988 is, Sunday, April 3
+Easter in 1989 is, Sunday, March 26
+Would you like to run the program again? (y/n): y
+
+
+
+
+EASTER PROGRAM
+==============
+
+Enter the first year for which you desire to know the date of Easter (1900-2099): 2000
+Enter the last year: 2005
+Easter in 2000 is, Sunday, April 23
+Easter in 2001 is, Sunday, April 15
+Easter in 2002 is, Sunday, March 31
+Easter in 2003 is, Sunday, April 20
+Easter in 2004 is, Sunday, April 11
+Easter in 2005 is, Sunday, March 27
+Would you like to run the program again? (y/n): y
+
+
+
+
+EASTER PROGRAM
+==============
+
+Enter the first year for which you desire to know the date of Easter (1900-2099): 1900 1907     
+Enter the last year: 1907
+Easter in 1900 is, Sunday, April 15
+Easter in 1901 is, Sunday, April 7
+Easter in 1902 is, Sunday, March 30
+Easter in 1903 is, Sunday, April 12
+Easter in 1904 is, Sunday, April 3
+Easter in 1905 is, Sunday, April 23
+Easter in 1906 is, Sunday, April 15
+Easter in 1907 is, Sunday, March 31
+Would you like to run the program again? (y/n): y
+
+
+
+
+EASTER PROGRAM
+==============
+
+Enter the first year for which you desire to know the date of Easter (1900-2099): 2007
+Enter the last year: 2009
+Easter in 2007 is, Sunday, April 8
+Easter in 2008 is, Sunday, March 23
+Easter in 2009 is, Sunday, April 12
+Would you like to run the program again? (y/n): n
+
+
+
+
+by Jamie Orlando> 
+> exit
+> exit
+
+script done on Fri Sep 24 14:45:14 1999

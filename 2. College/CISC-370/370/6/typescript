@@ -1,0 +1,86 @@
+Script started on Mon May 07 16:09:48 2001
+%cd client
+%cat HashClient.java
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class HashClient
+{
+   //public void process()
+   public static void main(String[] args)
+   {
+      try
+      {
+         String serverObjName = "rmi://mariokart.dhs.org/HashServer";
+         HashServer mytemp = (HashServer)Naming.lookup(serverObjName);
+
+         String current_get;
+         mytemp.remote_put("This is in key 1", new Integer(1));
+         current_get = mytemp.remote_get(new Integer(1));
+         System.out.println(current_get);
+      }
+      catch(java.rmi.ConnectException ce)
+      { System.out.println("Connection to server failed."); }
+      catch(Exception e)
+      { System.out.println("Error " + e); }
+      System.exit(0);
+   }
+}
+%javac HashClient.java
+%cd ..
+%cd server/
+%cat HashServer.java
+import java.rmi.*;
+import java.lang.*;
+
+public interface HashServer extends Remote
+{
+   public void remote_put(String s, Integer i)
+      throws RemoteException;
+   public String remote_get(Integer i)
+      throws RemoteException;
+}
+%cat HashServerImpl.java
+import java.rmi.*;
+import java.rmi.server.*;
+import sun.applet.*;
+import java.util.*;
+
+public class HashServerImpl extends UnicastRemoteObject implements HashServer
+{
+   public static void main(String args[])
+   {
+      try
+      {
+         HashServerImpl temp = new HashServerImpl();
+         String serverObjName = "//localhost/HashServer";
+         Naming.rebind(serverObjName, temp);
+      }
+      catch(Exception e)
+      { System.out.println("Error: " + e); }
+   }
+
+   public HashServerImpl()
+      throws Exception
+   { main_hash = new Hashtable(); }
+
+   public void remote_put(String s, Integer i)
+      throws RemoteException
+   { main_hash.put((Object)s, (Object)i); }
+
+   public String remote_get(Integer i)
+      throws RemoteException
+   { return (String)main_hash.get((Object)i); }
+
+   private Hashtable main_hash;
+}
+%javac *.java
+%rmic -v1.2 HashServerImpl
+%ls
+HashServer.class           HashServerImpl.java
+HashServer.java            HashServerImpl_Stub.class
+HashServerImpl.class
+%exit
+exit
+
+script done on Mon May 07 16:11:24 2001

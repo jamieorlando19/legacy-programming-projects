@@ -1,0 +1,38 @@
+(define (units-digit n)
+  (remainder n 10))
+
+(define (all-but-units-digit n)
+  (quotient n 10)) 
+
+;decimal-length computes the number of digits in number n, and is recursive.
+(define (decimal-length n)
+  (if (= (all-but-units-digit n) 0 )
+      1
+      (+ (decimal-length (all-but-units-digit n)) 1)))
+;ith-digit returns the value of the digit i digits in to the number n, and is iterative.
+(define (ith-digit n i)
+  (if (= (decimal-length n) i) (units-digit n)
+	(ith-digit (all-but-units-digit n) i)))
+;leading-digit returns the first digit of n, using ith-digit to do most of the work, 
+;and is iterative.
+(define (leading-digit n)
+  (ith-digit n 1))
+;occurances returns the number of times digit d occurs in number n, and is recursive
+(define (occurances d n)
+  (cond ((and (= (units-digit n) 0) (= (all-but-units-digit n) 0)) 0)
+        ((= (units-digit n) d) (+ (occurances d (all-but-units-digit n)) 1))
+	(else (occurances d (all-but-units-digit n)))))
+
+;digit-sum returns the sum of the digits of n, and is also recursive.
+(define (digit-sum n)
+  (if (= (all-but-units-digit n) 0)
+      n
+      (+ (digit-sum (all-but-units-digit n)) (units-digit n))))
+;digital-root returns the sum of the sum of the digits of n, until there is only
+;one digit remaining... it is also recursive.
+(define (digital-root n)
+  (let ((x (digit-sum n)))
+  (if (= (all-but-units-digit x) 0) 
+      x
+      (digital-root x))))
+   

@@ -1,0 +1,73 @@
+Welcome to DrScheme, version 53.
+Language: R4RS+.
+> (test)
+(#<void> #<void> #<void> #<void> #<void> #<void> #<void> #<void> #<void> #<void>)
+> 
+I sold 7 tickets
+I sold 11 tickets
+I sold 8 tickets
+I sold 14 tickets
+I sold 5 tickets
+I sold 5 tickets
+I sold 9 tickets
+I sold 12 tickets
+I sold 17 tickets
+I sold 12 tickets
+> 
+> (display-stream (remove-duplicates (list->stream '(1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 5 4 3 2 1 6 54 3))))
+
+1
+2
+3
+4
+5
+6
+54
+done
+> (display-stream (stream-map (lambda (x) (* x x))
+		(list->stream '(7 6 5 4 3 2 1))))
+
+49
+36
+25
+16
+9
+4
+1
+done
+> (stream-print-n (stream-map (lambda (x) (* x x))
+			      (tty-stream)) 10)
+5
+25,6
+36,7
+49,8
+64,9
+81,10
+100,11
+121,12
+144,13
+169,14
+196,15
+
+> (display-stream (stream-map-new * (list->stream '(1 2 3 4 5 6 7 8 9 10 99 100)) (list->stream '(100 99 10 9 8 7 6 5 4 3 2 1))))
+
+100
+198
+30
+36
+40
+42
+42
+40
+36
+30
+198
+100
+done
+> (display-stream (stream-map-new + (list->stream '(3 2 1)) (list->stream '(4 5 6)) (list->stream '(1 2 3)) (list->stream '(8 9 10))))
+
+16
+18
+20
+done
+> 

@@ -1,0 +1,569 @@
+Welcome to DrScheme, version 53.
+Language: R4RS+.
+initialized
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+> (play-game)
+
+At laird-campus : kalim says -- I take kcard 
+At errol-office : errol says -- I take errol-card 
+At keith-office : keith says -- I take keith-card 
+#t
+> (clock)
+
+---Tick---
+At pencader-dining : stud5 says -- I take bread-of-unusual-softness 
+At christiana-west : stud4 says -- I take west-card 
+tick-tock
+> (ask kalim 'go 'south)
+
+kalim moves from laird-campus to Trabant-Center 
+#t
+> (clock)
+
+---Tick---
+stud5 moves from pencader-dining to laird-campus 
+stud4 moves from christiana-west to christiana-com 
+keith moves from keith-office to Greenhouse 
+errol moves from errol-office to Smith-Hall 
+tick-tock
+> (ask kalim 'go 'north)
+
+kalim moves from Trabant-Center to laird-campus 
+At laird-campus : kalim says -- Hi stud5 
+#t
+> (clock)
+
+---Tick---
+stud5 can't move to pencader-dining 
+stud4 moves from christiana-com to laird-campus 
+At laird-campus : stud4 says -- Hi kalim stud5 
+tick-tock
+> (ask kalim 'look-around)
+
+At laird-campus : kalim says -- I see west-card stud4 kcard bread-of-unusual-softness stud5 
+(west-card stud4 kcard bread-of-unusual-softness stud5)
+> (ask kalim 'take west-card)
+
+At laird-campus : stud4 says -- I lose west-card 
+At laird-campus : stud4 says -- Yaaaah! I am upset! 
+At laird-campus : kalim says -- I take west-card 
+#t
+> (clock)
+
+---Tick---
+stud6 moves from computer-lab to Smith-Hall 
+At Smith-Hall : stud6 says -- Hi errol 
+stud5 can't move to pencader-halls 
+stud4 can't move to pencader-dining 
+At pencader-halls : stud2 says -- I take penc-card 
+keith moves from Greenhouse to keith-office 
+tick-tock
+> (ask kalim 'look-around)
+
+At laird-campus : kalim says -- I see west-card stud4 kcard bread-of-unusual-softness stud5 
+(west-card stud4 kcard bread-of-unusual-softness stud5)
+> (ask kalim 'take bread-of-unusual-softness)
+reference to undefined identifier: bread-of-unusual-softness
+> (ask kalim 'take bread)
+
+At laird-campus : stud5 says -- I lose bread-of-unusual-softness 
+At laird-campus : stud5 says -- Yaaaah! I am upset! 
+At laird-campus : kalim says -- I take bread-of-unusual-softness 
+#t
+> (clock)
+
+---Tick---
+At christiana-east : stud3 says -- I take east-card 
+stud2 moves from pencader-halls to laird-campus 
+At laird-campus : stud2 says -- Hi stud4 kalim stud5 
+tick-tock
+> (ask kalim 'look-around)
+
+At laird-campus : kalim says -- I see penc-card stud2 west-card stud4 kcard bread-of-unusual-softness stud5 
+(penc-card stud2 west-card stud4 kcard bread-of-unusual-softness stud5)
+> (ask kalim 'go 'north)
+
+kalim moves from laird-campus to christiana-com 
+#t
+> (clock)
+
+---Tick---
+At Smith-Hall : stud6 says -- I take spare-card 
+stud5 can't move to pencader-dining 
+stud4 can't move to pencader-dining 
+stud3 moves from christiana-east to christiana-com 
+At christiana-com : stud3 says -- Hi kalim Legit ID, please continue.
+stud2 moves from laird-campus to pencader-halls 
+tick-tock
+> (ask kalim 'look-around)
+
+At christiana-com : kalim says -- I see east-card stud3 kcard west-card bread-of-unusual-softness 
+(east-card stud3 kcard west-card bread-of-unusual-softness)
+> (ask kalim 'take east-card)
+
+At christiana-com : stud3 says -- I lose east-card 
+At christiana-com : stud3 says -- Yaaaah! I am upset! 
+At christiana-com : kalim says -- I take east-card 
+#t
+> (ask kalim 'emote smiles evilly.)
+reference to undefined identifier: smiles
+> (ask kalim 'emote '(smiles evilly.))
+
+At christiana-com : kalim smiles evilly. 
+message-displayed
+> (clock)
+
+---Tick---
+stud5 can't move to pencader-halls 
+stud3 can't move to christiana-west 
+tick-tock
+> (ask kalim 'go 'west)
+Legit ID, please continue.
+kalim moves from christiana-com to christiana-west 
+#t
+> (clock)
+
+---Tick---
+stud5 can't move to christiana-com 
+keith moves from keith-office to Greenhouse 
+At Smith-Hall : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'east)
+
+kalim moves from christiana-west to christiana-com 
+At christiana-com : kalim says -- Hi stud3 
+#t
+> (ask kalim 'go 'east)
+Legit ID, please continue.
+kalim moves from christiana-com to christiana-east 
+#t
+> (ask kalim 'go 'west)
+
+kalim moves from christiana-east to christiana-com 
+At christiana-com : kalim says -- Hi stud3 
+#t
+> (clock)
+
+---Tick---
+stud2 moves from pencader-halls to laird-campus 
+At laird-campus : stud2 says -- Hi stud4 stud5 
+At dormitory : stud1 says -- I take late-homework 
+keith moves from Greenhouse to keith-office 
+tick-tock
+> (ask kalim 'look-around)
+
+At christiana-com : kalim says -- I see kcard west-card bread-of-unusual-softness east-card stud3 
+(kcard west-card bread-of-unusual-softness east-card stud3)
+> (ask kalim 'go 'south)
+
+kalim moves from christiana-com to laird-campus 
+At laird-campus : kalim says -- Hi stud2 stud4 stud5 
+#t
+> (ask kalim 'look-around)
+
+At laird-campus : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card stud2 stud4 stud5 
+(kcard west-card bread-of-unusual-softness east-card penc-card stud2 stud4 stud5)
+> (clock)
+
+---Tick---
+stud6 moves from Smith-Hall to errol-office 
+stud5 can't move to christiana-com 
+At dormitory : stud1 says -- I take dorm-card 
+errol moves from Smith-Hall to Greenhouse 
+tick-tock
+> (ask kalim 'take penc-card)
+
+At laird-campus : stud2 says -- I lose penc-card 
+At laird-campus : stud2 says -- Yaaaah! I am upset! 
+At laird-campus : kalim says -- I take penc-card 
+#t
+> (ask kalim 'emote '(cheers wildly for himself!))
+
+At laird-campus : kalim cheers wildly for himself! 
+message-displayed
+> (ask kalim 'look-around)
+
+At laird-campus : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card stud2 stud4 stud5 
+(kcard west-card bread-of-unusual-softness east-card penc-card stud2 stud4 stud5)
+> (clock)
+
+---Tick---
+stud4 can't move to christiana-com 
+keith moves from keith-office to Greenhouse 
+At Greenhouse : keith says -- Hi errol 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'east)
+Legit ID, please continue.
+kalim moves from laird-campus to pencader-halls 
+#t
+> (clock)
+
+---Tick---
+stud6 moves from errol-office to Smith-Hall 
+stud4 can't move to christiana-com 
+stud3 can't move to christiana-west 
+stud2 moves from laird-campus to Trabant-Center 
+stud1 moves from dormitory to Trabant-Center 
+At Trabant-Center : stud1 says -- Hi stud2 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'west)
+
+kalim moves from pencader-halls to laird-campus 
+At laird-campus : kalim says -- Hi stud4 stud5 
+#t
+> (clock)
+
+---Tick---
+stud3 can't move to christiana-west 
+stud2 moves from Trabant-Center to laird-campus 
+At laird-campus : stud2 says -- Hi kalim stud4 stud5 Legit ID, please continue.
+stud1 moves from Trabant-Center to dormitory 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go south)
+reference to undefined identifier: south
+> (ask kalim 'go 'west)
+
+You cannot go west from laird-campus 
+#f
+> (clock)
+
+---Tick---
+stud2 can't move to christiana-com 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'up)
+
+kalim moves from laird-campus to pencader-dining 
+#t
+> (ask kalim 'go 'down)
+
+kalim moves from pencader-dining to laird-campus 
+At laird-campus : kalim says -- Hi stud2 stud4 stud5 
+#t
+> (clock)
+
+---Tick---
+stud6 moves from Smith-Hall to errol-office 
+stud5 can't move to pencader-halls 
+stud4 can't move to pencader-halls 
+stud3 can't move to christiana-west 
+stud2 moves from laird-campus to Trabant-Center 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'look-around)
+
+At laird-campus : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card stud4 stud5 
+(kcard west-card bread-of-unusual-softness east-card penc-card stud4 stud5)
+> (ask kalim 'go 'south)
+
+kalim moves from laird-campus to Trabant-Center 
+At Trabant-Center : kalim says -- Hi stud2 
+#t
+> (ask kalim 'look-around)
+
+At Trabant-Center : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card stud2 
+(kcard west-card bread-of-unusual-softness east-card penc-card stud2)
+> (clock)
+
+---Tick---
+stud6 moves from errol-office to Smith-Hall 
+stud5 moves from laird-campus to Trabant-Center 
+At Trabant-Center : stud5 says -- Hi kalim stud2 
+stud4 can't move to christiana-com 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'look-around)
+
+At Trabant-Center : kalim says -- I see stud5 kcard west-card bread-of-unusual-softness east-card penc-card stud2 
+(stud5 kcard west-card bread-of-unusual-softness east-card penc-card stud2)
+> (ask kalim 'south)
+No method south kalim
+> (ask kalim 'go 'south)
+
+kalim moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : kalim says -- Hi stud6 
+#t
+> (Ask kalim 'look-around)
+reference to undefined identifier: Ask
+> (ask kalim 'look-around)
+
+At Smith-Hall : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud6 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud6)
+> (clock)
+
+---Tick---
+stud4 moves from laird-campus to Trabant-Center 
+At Trabant-Center : stud4 says -- Hi stud5 stud2 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'take spare-card)
+
+At Smith-Hall : stud6 says -- I lose spare-card 
+At Smith-Hall : stud6 says -- Yaaaah! I am upset! 
+At Smith-Hall : kalim says -- I take spare-card 
+#t
+> (ask kalim 'look-around)
+
+At Smith-Hall : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud6 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud6)
+>  (clock)
+
+---Tick---
+stud3 can't move to christiana-east 
+tick-tock
+> (ask kalim 'go 'west)
+
+kalim moves from Smith-Hall to errol-office 
+#t
+> (ask kalim 'look-around)
+
+At errol-office : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card)
+> (clock)
+
+---Tick---
+stud5 can't move to dormitory 
+stud4 moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : stud4 says -- Hi stud6 
+stud1 moves from dormitory to Trabant-Center 
+At Trabant-Center : stud1 says -- Hi stud5 stud2 
+At Greenhouse : keith says -- You should be taking notes 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'east)
+
+kalim moves from errol-office to Smith-Hall 
+At Smith-Hall : kalim says -- Hi stud4 stud6 
+#t
+> (ask kalim 'look-around)
+
+At Smith-Hall : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud4 stud6 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud4 stud6)
+> (clock)
+
+---Tick---
+stud6 moves from Smith-Hall to Trabant-Center 
+At Trabant-Center : stud6 says -- Hi stud1 stud5 stud2 
+stud4 moves from Smith-Hall to computer-lab 
+stud2 moves from Trabant-Center to laird-campus 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'look-around)
+
+At Smith-Hall : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card)
+> (Ask kalim 'go 'east)
+reference to undefined identifier: Ask
+> (ask kalim 'go 'east)
+
+kalim moves from Smith-Hall to Greenhouse 
+At Greenhouse : kalim says -- Hi keith errol 
+#t
+> (ask kalim 'look-around)
+
+At Greenhouse : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card keith-card keith errol-card errol 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card keith-card keith errol-card errol)
+> (clock)
+
+---Tick---
+stud6 moves from Trabant-Center to Smith-Hall 
+stud3 can't move to christiana-east 
+stud1 moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : stud1 says -- Hi stud6 
+At Greenhouse : keith says -- You should be taking notes 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'up)
+
+kalim moves from Greenhouse to keith-office 
+#t
+> (ask kalim 'look-around)
+
+At keith-office : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card)
+> (clock)
+
+---Tick---
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'down)
+
+kalim moves from keith-office to Greenhouse 
+At Greenhouse : kalim says -- Hi keith errol 
+#t
+> (clock)
+
+---Tick---
+stud6 moves from Smith-Hall to computer-lab 
+At computer-lab : stud6 says -- Hi stud4 
+stud4 moves from computer-lab to Smith-Hall 
+At Smith-Hall : stud4 says -- Hi stud1 
+stud1 moves from Smith-Hall to Trabant-Center 
+At Trabant-Center : stud1 says -- Hi stud5 
+At Greenhouse : keith says -- You should be taking notes 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'west)
+
+kalim moves from Greenhouse to Smith-Hall 
+At Smith-Hall : kalim says -- Hi stud4 
+#t
+> (ask kalim 'look-around)
+
+At Smith-Hall : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud4 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card stud4)
+> (clock)
+
+---Tick---
+stud5 moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : stud5 says -- Hi kalim stud4 
+stud3 can't move to christiana-east 
+At Greenhouse : keith says -- You should be taking notes 
+At Greenhouse : errol says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'north)
+
+kalim moves from Smith-Hall to Trabant-Center 
+At Trabant-Center : kalim says -- Hi stud1 
+#t
+> (ask kalim 'look-around)
+
+At Trabant-Center : kalim says -- I see kcard west-card bread-of-unusual-softness east-card penc-card spare-card late-homework dorm-card stud1 
+(kcard west-card bread-of-unusual-softness east-card penc-card spare-card late-homework dorm-card stud1)
+> (clock)
+
+---Tick---
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'take dorm-card)
+
+At Trabant-Center : stud1 says -- I lose dorm-card 
+At Trabant-Center : stud1 says -- Yaaaah! I am upset! 
+At Trabant-Center : kalim says -- I take dorm-card 
+#t
+> (ask kalim 'emote '(does a little "I just got all the cards" dance))
+
+At Trabant-Center : kalim does a little I just got all the cards dance 
+message-displayed
+> (ask kalim 'go 'east)
+Legit ID, please continue.
+kalim moves from Trabant-Center to dormitory 
+#t
+> (ask kalim 'go 'west)
+
+kalim moves from dormitory to Trabant-Center 
+At Trabant-Center : kalim says -- Hi stud1 
+#t
+> (ask kalim 'go 'east)
+
+At dungeon : Enforcer says -- Grrrrrrrrrrr..... I find theef dat stoled card en 'eet 'im! 
+kalim moves from Trabant-Center to dormitory 
+#t
+> (clock)
+
+---Tick---
+Enforcer moves from dungeon to Trabant-Center 
+At Trabant-Center : Enforcer says -- Hi stud1 
+stud5 moves from Smith-Hall to errol-office 
+stud4 moves from Smith-Hall to computer-lab 
+At computer-lab : stud4 says -- Hi stud6 
+stud2 can't move to pencader-dining 
+stud1 can't move to dormitory 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'west)
+
+kalim moves from dormitory to Trabant-Center 
+At Trabant-Center : kalim says -- Hi Enforcer stud1 
+#t
+> (clock)
+
+---Tick---
+At Trabant-Center : Enforcer says -- U r luhgit,  stud1 , mi no eet u. 
+stud6 moves from computer-lab to Smith-Hall 
+stud2 can't move to christiana-com 
+stud1 moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : stud1 says -- Hi stud6 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'go 'south)
+
+kalim moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : kalim says -- Hi stud1 stud6 
+#t
+> (clock)
+
+---Tick---
+Enforcer moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : Enforcer says -- Hi kalim stud1 stud6 
+stud6 moves from Smith-Hall to Trabant-Center 
+stud2 moves from laird-campus to Trabant-Center 
+At Trabant-Center : stud2 says -- Hi stud6 
+stud1 moves from Smith-Hall to Trabant-Center 
+At Trabant-Center : stud1 says -- Hi stud2 stud6 
+At Greenhouse : keith says -- You should be taking notes 
+tick-tock
+> (ask kalim 'look-around)
+
+At Smith-Hall : kalim says -- I see Enforcer kcard west-card bread-of-unusual-softness east-card penc-card spare-card dorm-card 
+(Enforcer kcard west-card bread-of-unusual-softness east-card penc-card spare-card dorm-card)
+> (ask kalim 'emote '(shudders with fright at the massive ogre approaching him.))
+
+At Smith-Hall : kalim shudders with fright at the massive ogre approaching him. 
+message-displayed
+> (clock)
+
+---Tick---
+At Smith-Hall : Enforcer says -- Growl.... I'm going to eat you,  kalim , you stinking cardthief! 
+At Smith-Hall : kalim says -- I lose dorm-card 
+At Smith-Hall : kalim says -- I lose spare-card 
+At Smith-Hall : kalim says -- I lose penc-card 
+At Smith-Hall : kalim says -- I lose east-card 
+At Smith-Hall : kalim says -- I lose bread-of-unusual-softness 
+At Smith-Hall : kalim says -- I lose west-card 
+At Smith-Hall : kalim says -- I lose kcard 
+At Smith-Hall : kalim says -- 
+                   Dulce et decorum est 
+                   pro computatore mori! 
+kalim moves from Smith-Hall to heaven 
+At Smith-Hall : Enforcer says -- Chomp chomp. kalim tastes yummy! 
+stud6 moves from Trabant-Center to Smith-Hall 
+At Smith-Hall : stud6 says -- Hi Enforcer 
+stud5 moves from errol-office to Smith-Hall 
+At Smith-Hall : stud5 says -- Hi stud6 Enforcer 
+stud3 can't move to christiana-west 
+stud1 can't move to dormitory 
+tick-tock
+> (ask kalim 'look-around)
+
+At heaven : kalim says -- I see nothing 
+()
+> (ask kalim 'emote '(is dead. :< ))
+
+At heaven : kalim is dead. :< 
+message-displayed
+> (ask kalim 'say '(game over for mi.... ))
+
+At heaven : kalim says -- game over for mi.... 
+said
+> (ask kalim 'say '(and good evening.))
+
+At heaven : kalim says -- and good evening. 
+said
+> 

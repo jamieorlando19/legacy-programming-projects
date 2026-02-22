@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+    "http://java.sun.com/j2ee/dtds/web-app_2.2.dtd">
+
+<web-app>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>
+      ValidateLogin
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/ValidateLogin
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>
+      ValidateLogout
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/ValidateLogout
+    </servlet-class>
+  </servlet>
+
+
+  <servlet>
+    <servlet-name>
+      EditScheme
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/EditScheme
+    </servlet-class>
+  </servlet>
+
+
+  <servlet>
+    <servlet-name>
+      EditBio
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/EditBio
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name> 
+      UpdateNews
+    </servlet-name> 
+    <servlet-class>
+      com/warthog/application/controllers/UpdateNews
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>
+      DeleteNews  
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/DeleteNews
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name> 
+      UpdateDate
+    </servlet-name> 
+    <servlet-class>
+      com/warthog/application/controllers/UpdateDate
+    </servlet-class>
+  </servlet>
+    
+  <servlet>
+    <servlet-name> 
+      DeleteDate
+    </servlet-name>
+    <servlet-class> 
+      com/warthog/application/controllers/DeleteDate
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>
+      UploadMp3
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/UploadMp3
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>
+      DeleteMp3
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/DeleteMp3
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name> 
+      UploadImage
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/UploadImage
+    </servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>
+      DeleteImage
+    </servlet-name>
+    <servlet-class>
+      com/warthog/application/controllers/DeleteImage
+    </servlet-class>
+  </servlet>
+
+
+
+</web-app>

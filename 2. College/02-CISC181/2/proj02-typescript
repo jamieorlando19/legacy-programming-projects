@@ -1,0 +1,293 @@
+Script started on Wed Oct 20 23:20:37 1999
+> cat p[K> cat proj02-cov
+
+              CIS 181 Programming Assignment
+
+
+        Assignment: Project #2  
+
+        Programmer: Jamie Orlando 
+        Login name: orlandoj 
+
+
+
+
+                 
+    CORRECTNESS                        | Possible |  Grade  
+   ------------------------------------+----------+---------+
+        C:  Correct operation          |   35%    |         |
+       --------------------------------+----------+---------|
+        T:  Testing                    |   15%    |         |
+       --------------------------------+----------+---------|
+
+    CLARITY                                                 
+   ------------------------------------+----------+---------+
+        D:  Documentation              |   15%    |         |
+       --------------------------------+----------+---------+
+        M:  Class structure            |   10%    |         |
+       --------------------------------+----------+---------+
+        C:  Code structure             |   10%    |         |
+       --------------------------------+----------+---------+
+        N:  Naming                     |   10%    |         |
+       --------------------------------+----------+---------+
+        F:  Formatting                 |    5%    |         |
+       --------------------------------+----------+---------+
+                               TOTAL   |  100%    |         |
+                                       +----------+---------+
+
+> cat proj02-grades.cc
+//Project #2
+//Program reads grades from a file containing names and ID numbers and calculates the class
+//average, standard deviation, percentage of grades in certain ranges and a histogram
+
+#include<iostream.h>
+#include<iomanip.h>
+#include<math.h>
+
+const int MAX_STUDENTS = 100;        //Maximum Students in the class
+const int GRADE_RANGE = 5;           //Number of ranges of grades to store
+
+int readgrades(int[]);
+float average(const int[]);
+float stdeviation(const int[], float, int);
+void ranges(const int[], int[]);
+void printresults(const int[], const int[], int, float, float);
+
+int main()
+{
+   int gradelist[MAX_STUDENTS];     //The list of the students grades
+   int rangelist[GRADE_RANGE] = {0};//Array to store the range of grades
+   int numstud;                     //The number of students in the class
+   float classavg;                  //The class average   
+   float stddev;                    //The standard deviation
+
+   numstud = readgrades(gradelist);
+   classavg = average(gradelist);
+   stddev = stdeviation(gradelist, classavg, numstud);
+   ranges(gradelist, rangelist); 
+   printresults(gradelist, rangelist, numstud, classavg, stddev);
+ 
+   cout << endl << endl << "Programmed by Jamie Orlando" << endl;
+   return 0;
+}
+
+int readgrades(int list[])
+//Reads grades from a file into the array, and returns the number of grades
+{
+   int grade;                      //Temporary variable to store the grade before it is added to the array
+   char dummy[40];                 //Temporary string to store superflous file data
+   
+   for(int a = 1; a <=4; ++a)      //Reads in the superflous data at the beginning of the file 
+      cin >> dummy; 
+
+   for(int b = 0; cin >> dummy >> dummy >> grade; ++b)  //Reads grades into the array
+      list[b] = grade;
+   list[b] = '\0';
+   return b;
+}
+
+float average(const int list[])
+//Computes the class average
+{
+   float total = 0;
+   for(int num = 0; list[num]; ++num) 
+      total += list[num];
+   
+   return total/num;
+}
+
+float stdeviation(const int list[], float avg, int n)
+//Computes the standard deviation
+{
+   if(n == 1) return 0;
+   float numer = 0;                  //Numerator in the equation for standard deviation
+
+   for(int q = 0; list[q]; ++q)
+       numer += pow((list[q] - avg), 2);
+
+   return sqrt(numer/(n - 1));
+}
+
+void ranges(const int list[], int rng[])
+//Organizes each grade into categories
+{
+   for(int z = 0; list[z]; ++z)
+   {
+      if(list[z] >= 90)
+         ++rng[0];
+      else if(list[z] < 90 && list[z] >= 80)
+         ++rng[1];
+      else if(list[z] < 80 && list[z] >= 70)
+         ++rng[2];
+      else if(list[z] < 70 && list[z] >= 60)
+         ++rng[3];
+      else
+         ++rng[4];
+   }
+}
+
+void printresults(const int list[], const int rng[], int n, float avg, float stdev)
+//Prints average, standard deviation, percentage of various grades along with a histogram display
+{
+   cout << setprecision(2) << setiosflags(ios::fixed);
+   cout << " ------------------------- " << endl;
+   cout << "|Class Average:" << setw(11) << avg << "|" << endl;
+   cout << "|Standard Deviation:" << setw(6) << stdev << "|" << endl;
+   cout << " ------------------------- " << endl << endl;
+   cout << " ------------------------------------------------- " << endl;
+   cout << "|                Range Percentages                |" << endl;
+   cout << "|-------------------------------------------------|" << endl;
+   cout << "|  0 - 59" << setw(10) << "| 60 - 69" << setw(10) << "| 70 - 79" << setw(10) << "| 80 - 89" << setw(12) << "| 90 - 100|" << endl;
+   cout << "|-------------------------------------------------|" << endl;
+   for(int d = 4; d >= 0; --d)             //Prints corresponding percentages 
+      cout << "|" << setw(7) << (float(rng[d])/n) * 100 << "%" << setw(2);
+   cout << "|" <<  endl;
+   cout << " ------------------------------------------------- " << endl << endl;
+   cout << "Grade Range" << setw(9) << "Freq   " << "Histogram" << endl;
+   cout << "-----------" << setw(9) << "----   " << "---------" << endl;
+   for(int a = 0; a < 5; ++ a)             //Prints the histogram
+   {
+      switch(a)
+      {
+         case 0: cout << " 90 - 100";
+            break;
+         case 1: cout << " 80 -  89";
+            break;
+         case 2: cout << " 70 -  79";
+            break;
+         case 3: cout << " 60 -  69";
+            break;
+         case 4: cout << "  0 -  59";
+      }
+      cout << setw(8) << rng[a] << "   ";
+      for(int b = 0; b < rng[a]; ++b) cout << "*";
+      cout << endl;
+   } 
+}
+> cat proj02-data
+MAXPOINTS                    100
+weight                       15
+
+Aho,Al             #12345#   60
+Algol,Allie        #32194#   42
+Babbage,Charles    #77788#   88
+Bibel,Wolfgang     #08642#   76
+Biermann,Alan      #11122#   57
+Buchberger,Bruno   #13579#   56
+Cannon,Jane        #88876#   66
+Dixon,John         #00044#   88
+Engeler,Erwin      #99933#   49
+Fortran,Fran       #44598#   73
+Gerdt,Vladimir     #99987#   68
+Hoffmann,Chris     #74567#   81
+Holt,Dolly         #99887#   78
+Hong,Hoon          #97969#   61
+Hopcroft,John      #98765#   56
+Jones,Henry        #00431#   94
+Kaltofen,Erich     #97531#   44
+Kirchner,Claude    #44445#   81
+Lovelace,Lady      #22987#   97
+MacCallum,Malcolm  #97531#   89
+Miola,Alfonso      #99332#   55
+Monagan,Michael    #24680#   86
+Newman,Mary        #05395#   83
+Pascal,Blaise      #98723#   81
+Plus,Sea           #11321#   60
+Salvy,Bruno        #33445#   61
+Scott,Dana         #55555#   82
+Sims,Carol         #09876#   76
+Smith,Sally        #44821#   85
+Trager,Patrizia    #88843#   75
+Welzl,Emo          #00110#   85
+Yap,Chee           #25375#   98
+Zippel,Rachel      #99912#   80
+> a.out < po[Kroj02-data
+ ------------------------- 
+|Class Average:      73.06|
+|Standard Deviation: 15.32|
+ ------------------------- 
+
+ ------------------------------------------------- 
+|                Range Percentages                |
+|-------------------------------------------------|
+|  0 - 59 | 60 - 69 | 70 - 79 | 80 - 89 | 90 - 100|
+|-------------------------------------------------|
+|  21.21% |  18.18% |  15.15% |  36.36% |   9.09% |
+ ------------------------------------------------- 
+
+Grade Range  Freq   Histogram
+-----------  ----   ---------
+ 90 - 100       3   ***
+ 80 -  89      12   ************
+ 70 -  79       5   *****
+ 60 -  69       6   ******
+  0 -  59       7   *******
+
+
+Programmed by Jamie Orlando
+> cat l[Kproj02-data-test2
+MAXPOINTS                 100
+weight                    15
+
+Abc,Xyz         #43758#   100
+Qwerty,Uiop     #23455#   23
+Zxcvb,Amasd     #45666#   1
+Sfwehiu,Ewerhp  #65789#   89
+Asefho,Tpweth   #34579#   67
+> a.out < proj02-data-test2
+ ------------------------- 
+|Class Average:      56.00|
+|Standard Deviation: 42.60|
+ ------------------------- 
+
+ ------------------------------------------------- 
+|                Range Percentages                |
+|-------------------------------------------------|
+|  0 - 59 | 60 - 69 | 70 - 79 | 80 - 89 | 90 - 100|
+|-------------------------------------------------|
+|  40.00% |  20.00% |   0.00% |  20.00% |  20.00% |
+ ------------------------------------------------- 
+
+Grade Range  Freq   Histogram
+-----------  ----   ---------
+ 90 - 100       1   *
+ 80 -  89       1   *
+ 70 -  79       0   
+ 60 -  69       1   *
+  0 -  59       2   **
+
+
+Programmed by Jamie Orlando
+> cat proj02-data-oneperson
+MAXPOINTS                     100
+weight                        15
+
+Orlando,Jamie     #23455#     100
+> a.out < proj02-data-oneperson
+ ------------------------- 
+|Class Average:     100.00|
+|Standard Deviation:  0.00|
+ ------------------------- 
+
+ ------------------------------------------------- 
+|                Range Percentages                |
+|-------------------------------------------------|
+|  0 - 59 | 60 - 69 | 70 - 79 | 80 - 89 | 90 - 100|
+|-------------------------------------------------|
+|   0.00% |   0.00% |   0.00% |   0.00% | 100.00% |
+ ------------------------------------------------- 
+
+Grade Range  Freq   Histogram
+-----------  ----   ---------
+ 90 - 100       1   *
+ 80 -  89       0   
+ 70 -  79       0   
+ 60 -  69       0   
+  0 -  59       0   
+
+
+Programmed by Jamie Orlando
+> exit
+> exit
+
+script done on Wed Oct 20 23:22:01 1999

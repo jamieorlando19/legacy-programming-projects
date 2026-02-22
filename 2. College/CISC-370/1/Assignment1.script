@@ -1,0 +1,71 @@
+Script started on Mon Feb 19 02:23:15 2001
+%cat Problem1.java 
+/**
+Jamie Orlando
+CISC 370-011
+Assignment #1 Problem #1
+*/
+
+import java.io.*;
+
+public class Problem1
+{
+    public static void main(String[] args)
+    throws IOException
+    {
+        System.out.println("Please Enter Your Name:");
+        BufferedReader name = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Hello " + name.readLine() + ". I am very glad to meet you!");
+        System.out.println("Byebye! :)");
+    }
+}
+%javac Problem1.java 
+%java Problem1 
+Please Enter Your Name:
+Jamie Orlando
+Hello Jamie Orlando. I am very glad to meet you!
+Byebye! :)
+%cat Problem2.java 
+/**
+Jamie Orlando
+CISC 370-011
+Assignment #1 Problem #2
+*/
+
+import java.io.*;
+
+public class Problem2
+{
+    public static void main(String[] args)
+    throws IOException
+    {
+        BufferedReader getline = new BufferedReader(new InputStreamReader(System.in));
+        
+        System.out.println("How many names do you wish to enter?");
+        int num = Integer.parseInt(getline.readLine());
+        String[] Namelist = new String[num];
+        
+        for(int x = 0; x < num; x++){ Namelist[x] = getline.readLine();}
+        System.out.println("Here are the names:");
+        for(int y = 0; y < num; y++){ System.out.println(Namelist[y]);}
+        
+        System.out.println("All names displayed and accounted for.");
+    }
+}
+%javac Problem2.java 
+%java Problem2 
+How many names do you wish to enter?
+4
+Bugs Bunny
+Elmer Fudd
+Yosemite Sam
+Jamie Orlando
+Here are the names:
+Bugs Bunny
+Elmer Fudd
+Yosemite Sam
+Jamie Orlando
+All names displayed and accounted for.
+%exit exit
+
+script done on Mon Feb 19 02:25:21 2001

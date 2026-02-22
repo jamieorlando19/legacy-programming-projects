@@ -1,0 +1,103 @@
+Script started on Thu Mar 15 00:07:17 2001
+%cat FlagTest.java
+import javax.swing.*;
+
+public class FlagTest
+{
+   public static void main(String args[])
+   {
+      AmericanFlag frame = new AmericanFlag();
+      frame.setDefaultCloseOperation(3);
+      frame.show();
+   }
+}
+%cat AmericanFlag.java
+import javax.swing.*;
+import java.awt.Container;
+
+public class AmericanFlag extends JFrame
+{
+   public AmericanFlag()
+   {
+      setSize(1040, 520);
+      setTitle("American Flag");
+      setLocation(0, 0);
+
+      AmericanFlagGraphics panel = new AmericanFlagGraphics();
+      Container contentPane = getContentPane();
+      contentPane.add(panel);
+   }
+}
+%cat AmericanFlagGraphics.java 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.*;
+
+public class AmericanFlagGraphics extends JPanel
+{
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D)g;
+    
+      double stripe_y = 0.0;
+      boolean stripe_red = true;
+      for(double i = 0.0; i < 13.0; i++)
+      {
+         if(stripe_red)
+            g2.setPaint(Color.red);
+         else
+            g2.setPaint(Color.white);
+    
+         g2.fill(new Rectangle2D.Double(0.0, stripe_y, 1040.0, 40.0));
+         stripe_red = !stripe_red;
+         stripe_y += 40.0;
+      }
+      g2.setPaint(Color.blue);
+      g2.fill(new Rectangle2D.Double(0.0, 0.0, 416.0, 280.0));
+      g2.setPaint(Color.white);
+      int x_init, y_init = 5;
+      for(int i = 0; i < 5; i++)
+      {
+         x_init = 34;
+         for(int j = 0; j < 6; j++)
+         {
+            g2.fill(makeStar(x_init, y_init));
+            x_init += 64;
+         }
+         y_init += 60;
+      }
+      y_init = 35;
+      for(int k = 0; k < 4; k++)
+      {
+         x_init = 64;
+         for(int l = 0; l < 5; l++)
+         {
+            g2.fill(makeStar(x_init, y_init));
+            x_init += 64;
+         }
+         y_init += 60;
+      }
+   }
+
+   public Polygon makeStar(int x, int y)
+   {
+      Polygon star = new Polygon();
+      star.addPoint(15 + x, 0 + y);
+      star.addPoint(19 + x, 10 + y);
+      star.addPoint(29 + x, 10 + y);
+      star.addPoint(22 + x, 17 + y);
+      star.addPoint(24 + x, 29 + y);
+      star.addPoint(15 + x, 23 + y);
+      star.addPoint(7 + x, 29 + y);
+      star.addPoint(9 + x, 17 + y);
+      star.addPoint(0 + x, 10 + y);
+      star.addPoint(11 + x, 10 + y);
+      return star;
+   }
+}
+%javac *.java
+%exit
+exit
+
+script done on Thu Mar 15 00:08:09 2001

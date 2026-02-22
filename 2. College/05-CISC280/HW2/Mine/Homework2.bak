@@ -1,0 +1,9 @@
+(define (units-digit n)
+       (remainder n 10))
+
+(define (all-but-units-digit n)
+        (quotient n 10))
+
+(define decimal-length
+  (lambda (n)
+    (units-digit (all-but-units-digit n))))

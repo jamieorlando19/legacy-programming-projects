@@ -1,0 +1,611 @@
+Script started on Mon Mar 11 15:46:03 2002
+%make clean rm -rf sh.o get_path.o mysh
+%make cc -g -c sh.c
+cc -g -c get_path.c
+cc -g main.c sh.o get_path.o -o mysh
+%./mysh   [/home/usra/d1/53758/361/proj1]> 
+
+  [/home/usra/d1/53758/361/proj1]> ^D
+  [/home/usra/d1/53758/361/proj1]> ^Z^C
+
+  [/home/usra/d1/53758/361/proj1]> which
+Running built-in which
+which: Too few arguments.
+
+  [/home/usra/d1/53758/361/proj1]> which ls
+Running built-in which
+/usr/bin/ls
+
+  [/home/usra/d1/53758/361/proj1]> ls
+Executing /usr/bin/ls
+Makefile    get_path.c  get_path.o  main.o      sh.c        sh.o
+a.out       get_path.h  main.c      mysh        sh.h        typescript
+
+  [/home/usra/d1/53758/361/proj1]> 
+
+  [/home/usra/d1/53758/361/proj1]> ^D
+  [/home/usra/d1/53758/361/proj1]> ^Z^C
+
+  [/home/usra/d1/53758/361/proj1]> ls -l
+Executing /usr/bin/ls
+total 344
+-rw-r--r--   1 orlandoj 4000         302 Mar  6 00:16 Makefile
+-rwx------   1 orlandoj 4000       18376 Mar 11 15:43 a.out
+-rw-r--r--   1 orlandoj 4000        1114 Mar 11 15:30 get_path.c
+-rw-r--r--   1 orlandoj 4000         423 Mar 11 15:30 get_path.h
+-rw-------   1 orlandoj 4000       14516 Mar 11 15:46 get_path.o
+-rw-r--r--   1 orlandoj 4000         519 Mar 11 15:43 main.c
+-rw-------   1 orlandoj 4000       19788 Mar 11 15:46 main.o
+-rwx------   1 orlandoj 4000       39340 Mar 11 15:46 mysh
+-rw-r--r--   1 orlandoj 4000        9369 Mar 11 15:42 sh.c
+-rw-r--r--   1 orlandoj 4000         566 Mar 11 15:42 sh.h
+-rw-------   1 orlandoj 4000       43800 Mar 11 15:46 sh.o
+-rw-------   1 orlandoj 4000           0 Mar 11 15:46 typescript
+
+  [/home/usra/d1/53758/361/proj1]> ls -l -a /kernel/genunix
+Executing /usr/bin/ls
+-rwxr-xr-x   1 root     sys      1673316 Jun 20  2001 /kernel/genunix
+
+  [/home/usra/d1/53758/361/proj1]> ls -l -F /kernel/genunix
+Executing /usr/bin/ls
+-rwxr-xr-x   1 root     sys      1673316 Jun 20  2001 /kernel/genunix*
+
+  [/home/usra/d1/53758/361/proj1]> where
+Running built-in where
+where: Too few arguments.
+
+  [/home/usra/d1/53758/361/proj1]> where ls
+Running built-in where
+/usr/bin/ls
+/usr/ucb/ls
+
+  [/home/usra/d1/53758/361/proj1]> /usr/ucb/ls -l -g
+Executing /usr/ucb/ls
+total 172
+-rw-r--r--   1 orlandoj 4000          302 Mar  6 00:16 Makefile
+-rwx------   1 orlandoj 4000        18376 Mar 11 15:43 a.out
+-rw-r--r--   1 orlandoj 4000         1114 Mar 11 15:30 get_path.c
+-rw-r--r--   1 orlandoj 4000          423 Mar 11 15:30 get_path.h
+-rw-------   1 orlandoj 4000        14516 Mar 11 15:46 get_path.o
+-rw-r--r--   1 orlandoj 4000          519 Mar 11 15:43 main.c
+-rw-------   1 orlandoj 4000        19788 Mar 11 15:46 main.o
+-rwx------   1 orlandoj 4000        39340 Mar 11 15:46 mysh
+-rw-r--r--   1 orlandoj 4000         9369 Mar 11 15:42 sh.c
+-rw-r--r--   1 orlandoj 4000          566 Mar 11 15:42 sh.h
+-rw-------   1 orlandoj 4000        43800 Mar 11 15:46 sh.o
+-rw-------   1 orlandoj 4000            0 Mar 11 15:46 typescript
+
+  [/home/usra/d1/53758/361/proj1]> /usr/ucb/ls -l
+Executing /usr/ucb/ls
+total 172
+-rw-r--r--   1 orlandoj      302 Mar  6 00:16 Makefile
+-rwx------   1 orlandoj    18376 Mar 11 15:43 a.out
+-rw-r--r--   1 orlandoj     1114 Mar 11 15:30 get_path.c
+-rw-r--r--   1 orlandoj      423 Mar 11 15:30 get_path.h
+-rw-------   1 orlandoj    14516 Mar 11 15:46 get_path.o
+-rw-r--r--   1 orlandoj      519 Mar 11 15:43 main.c
+-rw-------   1 orlandoj    19788 Mar 11 15:46 main.o
+-rwx------   1 orlandoj    39340 Mar 11 15:46 mysh
+-rw-r--r--   1 orlandoj     9369 Mar 11 15:42 sh.c
+-rw-r--r--   1 orlandoj      566 Mar 11 15:42 sh.h
+-rw-------   1 orlandoj    43800 Mar 11 15:46 sh.o
+-rw-------   1 orlandoj        0 Mar 11 15:46 typescript
+
+  [/home/usra/d1/53758/361/proj1]> /usr/bin/ls/ -l -g
+Executing /usr/bin/ls/
+total 344
+-rw-r--r--   1 4000         302 Mar  6 00:16 Makefile
+-rwx------   1 4000       18376 Mar 11 15:43 a.out
+-rw-r--r--   1 4000        1114 Mar 11 15:30 get_path.c
+-rw-r--r--   1 4000         423 Mar 11 15:30 get_path.h
+-rw-------   1 4000       14516 Mar 11 15:46 get_path.o
+-rw-r--r--   1 4000         519 Mar 11 15:43 main.c
+-rw-------   1 4000       19788 Mar 11 15:46 main.o
+-rwx------   1 4000       39340 Mar 11 15:46 mysh
+-rw-r--r--   1 4000        9369 Mar 11 15:42 sh.c
+-rw-r--r--   1 4000         566 Mar 11 15:42 sh.h
+-rw-------   1 4000       43800 Mar 11 15:46 sh.o
+-rw-------   1 4000           0 Mar 11 15:46 typescript
+
+  [/home/usra/d1/53758/361/proj1]> /usr/bin/ls -l
+Executing /usr/bin/ls
+total 344
+-rw-r--r--   1 orlandoj 4000         302 Mar  6 00:16 Makefile
+-rwx------   1 orlandoj 4000       18376 Mar 11 15:43 a.out
+-rw-r--r--   1 orlandoj 4000        1114 Mar 11 15:30 get_path.c
+-rw-r--r--   1 orlandoj 4000         423 Mar 11 15:30 get_path.h
+-rw-------   1 orlandoj 4000       14516 Mar 11 15:46 get_path.o
+-rw-r--r--   1 orlandoj 4000         519 Mar 11 15:43 main.c
+-rw-------   1 orlandoj 4000       19788 Mar 11 15:46 main.o
+-rwx------   1 orlandoj 4000       39340 Mar 11 15:46 mysh
+-rw-r--r--   1 orlandoj 4000        9369 Mar 11 15:42 sh.c
+-rw-r--r--   1 orlandoj 4000         566 Mar 11 15:42 sh.h
+-rw-------   1 orlandoj 4000       43800 Mar 11 15:46 sh.o
+-rw-------   1 orlandoj 4000           0 Mar 11 15:46 typescript
+
+  [/home/usra/d1/53758/361/proj1]> ls *
+Executing /usr/bin/ls
+*: No such file or directory
+Exit 2
+
+  [/home/usra/d1/53758/361/proj1]> ls *.c
+Executing /usr/bin/ls
+*.c: No such file or directory
+Exit 2
+
+  [/home/usra/d1/53758/361/proj1]> blah
+blah: Command not found.
+
+  [/home/usra/d1/53758/361/proj1]> /blah
+/blah: Command not found.
+
+  [/home/usra/d1/53758/361/proj1]> ls -l /blah
+Executing /usr/bin/ls
+/blah: No such file or directory
+Exit 2
+
+  [/home/usra/d1/53758/361/proj1]> /usr/bin
+Executing /usr/bin
+/usr/bin: Permission denied.
+Exit 0
+
+  [/home/usra/d1/53758/361/proj1]> /bin/ls -la /
+Executing /bin/ls
+total 1942
+drwxr-xr-x  24 root     root        1024 Mar  7 07:18 .
+drwxr-xr-x  24 root     root        1024 Mar  7 07:18 ..
+-rw-------   1 root     other         49 Jan 31 22:21 .Xauthority
+drwxr-x---   3 root     other        512 Jan 31 22:21 .java
+-rw-------   1 root     other      49743 Oct 22 13:42 .lsof_spare
+-rw-r--r--   1 root     other        190 Aug 20  2001 .rhosts
+-rw-------   1 root     4410        1784 Nov 19 17:34 .sh_history
+drwx------   2 root     root         512 Feb 15 12:36 .ssh
+lrwxrwxrwx   1 root     root           9 Aug 17  2001 bin -> ./usr/bin
+drwxr-xr-x   2 root     other        512 Oct  2 10:50 cdrom
+-rw-------   1 root     root      343488 Mar  7 07:18 core
+drwxr-xr-x  14 root     sys         4096 Mar 10 23:00 dev
+drwxr-xr-x   5 root     sys          512 Aug 17  2001 devices
+drwxr-xr-x  44 root     sys         4096 Mar 11 14:31 etc
+drwxr-xr-x   2 root     sys          512 Aug 17  2001 export
+drwxr-xr-x  16 root     root         512 Mar  8 12:55 gcg
+dr-xr-xr-x   8 root     root         512 Oct 18 11:43 home
+lrwxrwxrwx   1 root     other         20 Oct 31 07:29 hsm -> /home/kodos/vol0/hsm
+drwxr-xr-x   9 root     sys          512 Aug 17  2001 kernel
+lrwxrwxrwx   1 root     root           9 Aug 17  2001 lib -> ./usr/lib
+drwx------   2 root     root        8192 Aug 17  2001 lost+found
+drwxr-xr-x   4 root     sys          512 Mar  7 06:17 mnt
+lrwxrwxrwx   1 root     other          8 Aug 20  2001 nsr -> /var/nsr
+drwxrwxr-x 120 root     staff       2560 Mar 11 11:51 opt
+drwxr-xr-x  21 root     sys         1024 Aug 17  2001 platform
+dr-xr-xr-x 1198 root     root      480032 Mar 11 15:49 proc
+drwxr-xr-x   2 root     sys         1024 Aug 20  2001 sbin
+drwxrwxrwt  46 root     sys        57493 Mar 11 15:49 tmp
+drwxr-xr-x  40 root     sys         1024 Mar  7 07:43 usr
+drwxr-xr-x  37 root     sys         1024 Mar 11 04:28 var
+drwxr-xr-x  31 root     sys          512 Aug 17  2001 var.old
+drwxr-xr-x   2 root     root         512 Aug 17  2001 vol
+drwxr-xr-x  18 root     root         512 Mar  7 14:02 www
+
+  [/home/usra/d1/53758/361/proj1]> file /bin/ls /bin/rm
+Executing /usr/bin/file
+/bin/ls:        ELF 32-bit MSB executable SPARC Version 1, dynamically linked, stripped
+/bin/rm:        ELF 32-bit MSB executable SPARC Version 1, dynamically linked, stripped
+
+  [/home/usra/d1/53758/361/proj1]> which ls rm
+Running built-in which
+/usr/bin/ls
+/usr/bin/rm
+
+  [/home/usra/d1/53758/361/proj1]> where ls rm
+Running built-in where
+/usr/bin/ls
+/usr/ucb/ls
+/usr/bin/rm
+
+  [/home/usra/d1/53758/361/proj1]> list
+Running built-in list
+.:
+.
+..
+main.c
+sh.c
+sh.h
+get_path.c
+get_path.h
+sh.o
+main.o
+get_path.o
+a.out
+typescript
+Makefile
+mysh
+
+  [/home/usra/d1/53758/361/proj1]> list / /usr/proc/bin
+Running built-in list
+/:
+.
+..
+lost+found
+usr
+opt
+var
+etc
+bin
+dev
+devices
+kernel
+lib
+mnt
+proc
+sbin
+tmp
+platform
+vol
+export
+home
+.ssh
+var.old
+nsr
+.rhosts
+www
+hsm
+cdrom
+gcg
+.lsof_spare
+.java
+core
+.sh_history
+.Xauthority
+
+/usr/proc/bin:
+.
+..
+pcred
+pfiles
+pflags
+pldd
+pmap
+prun
+psig
+pstack
+pstop
+ptime
+ptree
+pwait
+pwdx
+
+
+  [/home/usra/d1/53758/361/proj1]> cd
+Running built-in cd
+
+  [/home/usra/d1/53758]> pwd
+Running built-in pwd
+/home/usra/d1/53758
+
+  [/home/usra/d1/53758]> cd /blah
+Running built-in cd
+/blah: No such file or directory
+
+  [/home/usra/d1/53758]> cd /usr/bin /usr/ucb
+Running built-in cd
+cd: Too many arguments.
+
+  [/home/usra/d1/53758]> cd -
+Running built-in cd
+
+  [/home/usra/d1/53758/361/proj1]> pwd
+Running built-in pwd
+/home/usra/d1/53758/361/proj1
+
+  [/home/usra/d1/53758/361/proj1]> cd -
+Running built-in cd
+
+  [/home/usra/d1/53758]> pwd
+Running built-in pwd
+/home/usra/d1/53758
+
+  [/home/usra/d1/53758]>  cd -
+Running built-in cd
+
+  [/home/usra/d1/53758/361/proj1]> more sh.c
+Executing /usr/bin/more
+#include <stdio.h>
+#include <string.h>
+#include <strings.h>
+#include <limits.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <pwd.h>
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include "sh.h"
+
+
+extern char **environ;
+char *prompt;
+char *commandline;
+char *prefix;
+char *homedir;
+char *prevdir;
+struct pathelement *pathlist;
+
+int sh( int argc, char **argv, char **envp )
+[7m--More--(4%)[m
+
+[KExited.
+
+  [/home/usra/d1/53758/361/proj1]> 
+
+  [/home/usra/d1/53758/361/proj1]> cd /usr/bin
+Running built-in cd
+
+  [/usr/bin]> pwd
+Running built-in pwd
+/usr/bin
+
+  [/usr/bin]> ./ls /
+Executing /usr/bin/./ls
+bin         etc         kernel      opt         usr
+cdrom       export      lib         platform    var
+core        gcg         lost+found  proc        var.old
+dev         home        mnt         sbin        vol
+devices     hsm         nsr         tmp         www
+
+  [/usr/bin]> ../bin/ls /
+Executing /usr/bin/../bin/ls
+bin         etc         kernel      opt         usr
+cdrom       export      lib         platform    var
+core        gcg         lost+found  proc        var.old
+dev         home        mnt         sbin        vol
+devices     hsm         nsr         tmp         www
+
+  [/usr/bin]> pid
+Running built-in pid
+11773
+
+  [/usr/bin]> kill
+Running built-in kill
+Usage: kill [-SIG] pid
+Where SIG is a signal number.
+
+  [/usr/bin]> kill 11773
+Running built-in kill
+
+  [/usr/bin]> kill -1 11773
+Running built-in kill
+
+  [/usr/bin]> prompt
+Running built-in prompt
+Enter what you want the new prompt prefix to be: prefix
+
+prefix  [/usr/bin]> prompt 361shell
+Running built-in prompt
+
+361shell  [/usr/bin]> printenv PATH
+Running built-in printenv
+PATH=/opt/bin:/opt/SUNWspro/bin:/usr/openwin/bin:/usr/bin:/usr/ccs/bin:/usr/ucb:/opt/X11R5/bin:/opt/gnu/bin:.:/opt/gnu2.7.2.3/bin:/opt/gnu2.7.2.3/bin
+
+361shell  [/usr/bin]> setenv PATH /usr/bin
+Running built-in setenv
+
+361shell  [/usr/bin]> printenv PATH
+Running built-in printenv
+PATH=/usr/bin
+
+361shell  [/usr/bin]> where ls
+Running built-in where
+/usr/bin/ls
+
+361shell  [/usr/bin]> ls
+Executing /usr/bin/ls
+acctcom           fnlookup          nawk              sag
+adb               fnrename          ncab2clf          sar
+addbib            fnsearch          neqn              save
+admintool         fnunbind          netstat           savecore
+alias             fold              networker         savepnpc
+aliasadm          franklinp         newaliases        script
+amt               ftp               newform           sdiff
+apm               gcore             newgrp            sed
+appcert           gencat            newgrp:9          serialver
+appletviewer      geniconvtbl       news              setfacl
+apptrace          genlayouttbl      newsp             setpgrp
+apropos           genmsg            newtask           settime
+arch              getconf           nfsstat           setuname
+asa               getdev            nice              sh
+at                getdgrp           nisaddcred        showrev
+atq               getent            niscat            sleep
+atrm              getfacl           nischgrp          smartcard
+audioconvert      getopt            nischmod          soelim
+audioplay         getopts           nischown          solstice
+audiorecord       gettext           nischttl          sort
+auths             gettxt            nisdefaults       sortbib
+awk               getvol            niserror          sotruss
+banner            gpatch            nisgrep           sparc
+basename          graph             nisgrpadm         sparcv7
+bash              grep              nisln             sparcv9
+batch             groups            nisls             spell
+bc                gunzip            nismatch          spline
+bdiff             gzcat             nismkdir          split
+bfs               gzcmp             nispasswd         srchtxt
+bg                gzdiff            nispath           strace
+bunzip2           gzexe             nisprefadm        strchg
+busstat           gzforce           nisrm             strclean
+bzcat             gzgrep            nisrmdir          strconf
+bzip2             gzip              nistbladm         strerr
+bzip2recover      gzless            nistest           strings
+cachefspack       gzmore            nl                stty
+cachefsstat       gznew             nohup             su
+cal               hash              nroff             sum
+calendar          head              nsrfile           sun
+cancel            hostid            nsrports          sun2
+captoinfo         hostname          nsrwatch          sun3
+cat               i286              nwadmin           sun3x
+catman            i386              nwarchive         sun4
+cd                i486              nwbackup          sun4c
+cdrw              i860              nwrecover         sun4d
+chat              i86pc             nwretrieve        sun4e
+checkeq           iAPX286           oawk              sun4m
+checknr           iconv             od                sync
+chgrp             id                oldjava           ta
+chgrp:9           indxbib           on                tabs
+chkey             infocmp           optisa            tail
+chmod             iostat            pack              talk
+chown             ipcrm             page              tar
+chown:9           ipcs              pagesize          tbl
+chrtbl            isainfo           pargs             tcopy
+ckdate            isalist           passmgmt          tcsh
+ckgid             jar               passwd            tee
+ckint             jarsigner         paste             telnet
+ckitem            java              patch             test
+ckkeywd           javac             pathchk           tftp
+ckpath            javadoc           pax               tic
+ckrange           javah             pcat              time
+ckstr             javald            pcred             timemanp
+cksum             javap             pdp11             timesysp
+cktime            jdb               perl              timex
+ckuid             jobs              pfcsh             tip
+ckyorn            join              pfexec            tnameserv
+clear             jsh               pfiles            tnfdump
+cmp               kbd               pfksh             tnfxtract
+col               kbdcomp           pflags            touch
+colltbl           kdestroy          pfsh              tplot
+comm              keylogin          pg                tput
+command           keylogout         pgrep             tr
+compress          keytool           pkginfo           troff
+coreadm           kill              pkgmk             true
+cp                kinit             pkgparam          truss
+cpio              klist             pkgproto          tty
+cputrack          kpasswd           pkgtrans          type
+crle              ksh               pkill             u370
+crontab           kstat             pldd              u3b
+crypt             ktutil            plimit            u3b15
+csh               last              pmap              u3b2
+csplit            lastcomm          policytool        u3b5
+ct                ldapadd           ppgsz             ul
+ctags             ldapdelete        pppd              ulimit
+cu                ldaplist          pppdump           umask
+cut               ldapmodify        pppstats          unalias
+daps              ldapmodrdn        pr                uname
+date              ldapsearch        praliases         uncompress
+dc                ldd               prctl             unexpand
+dd                less              preap             uniq
+deroff            lessecho          preclntsave       units
+devattr           lesskey           prex              unix2dos
+devfree           line              printf            unpack
+devreserv         listdgrp          priocntl          unzip
+df                listusers         prodreg           uptime
+diff              ln                profiles          uucp
+diff3             loadkeys          projects          uudecode
+diffmk            locale            prstat            uuencode
+digestp           localedef         prun              uuglist
+dircmp            logger            ps                uulog
+dirname           login             psig              uuname
+disable           login.deleteme    pstack            uupick
+dispgid           logins            pstclntsave       uustat
+dispuid           logname           pstop             uuto
+dmesg             look              ptime             uux
+domainname        lookbib           ptree             vacation
+dos2unix          lp                putdev            vax
+du                lp_1251           putdgrp           vedit
+dumpcs            lpget             pvs               vgrind
+dumpkeys          lpset             pwait             vi
+echo              lpstat            pwconv            view
+ed                ls                pwd               vmstat
+edit              m68k              pwdx              volcheck
+egrep             mach              rcp               volrmmount
+eject             mail              rdate             vsig
+enable            mailcompat        rdist             w
+env               mailp             read              wait
+eqn               mailq             recover           wc
+ex                mailstats         recover.bin       wchrtbl
+expand            mailx             red               whatis
+expr              makedev           refer             which
+exstr             makeuuid          remsh             who
+extcheck          man               renice            whocalls
+factor            mc68000           rksh              whois
+false             mc68010           rlogin            wracct
+fc                mc68020           rm                write
+fdetach           mc68030           rmail             xargs
+fdformat          mc68040           rmdir             xgettext
+fg                mconnect          rmformat          xstr
+fgrep             mdb               rmic              yes
+file              mesg              rmid              ypcat
+filep             mkdir             rmiregistry       ypmatch
+filesync          mkfifo            roffbib           yppasswd
+filofaxp          mkisofs           roles             ypwhich
+find              mkmsgs            rpcgen            zcat
+finger            montbl            rpcinfo           zip
+fmli              more              rpm2cpio          zipcloak
+fmt               mp                rsh               zipinfo
+fmtmsg            mpstat            rstartd           zipnote
+fnattr            msgfmt            rup               zipsplit
+fnbind            mt                ruptime           zsh
+fncreate_printer  mv                rusers
+fnlist            native2ascii      rwho
+
+361shell  [/usr/bin]> setenv a b c
+Running built-in setenv
+setenv: Too many arguments.
+
+361shell  [/usr/bin]> setenv HOME /
+Running built-in setenv
+
+361shell  [/usr/bin]> printenv HOME
+Running built-in printenv
+HOME=/
+
+361shell  [/usr/bin]> setenv HOME /
+Running built-in setenv
+
+361shell  [/usr/bin]> printenv HOME
+Running built-in printenv
+HOME=/
+
+361shell  [/usr/bin]> cd
+Running built-in cd
+
+361shell  [/]> cd
+Running built-in cd
+
+361shell  [/]> pwd
+Running built-in pwd
+/
+
+361shell  [/]> printenv
+Running built-in printenv
+HOME=/
+PATH=/usr/bin
+LOGNAME=orlandoj
+HZ=1000
+TERM=ansi
+TZ=US/Eastern
+SHELL=/bin/tcsh
+MAIL=/var/mail/orlandoj
+HOSTTYPE=sun4
+VENDOR=sun
+OSTYPE=solaris
+MACHTYPE=sparc
+SHLVL=2
+PWD=/home/usra/d1/53758/361/proj1
+USER=orlandoj
+GROUP=4000
+HOST=strauss.udel.edu
+REMOTEHOST=pool-151-197-202-137.phil.east.verizon.net
+LD_LIBRARY_PATH=
+MANPATH=/opt/man:/opt/SUNWspro/man:/usr/openwin/man:/usr/man:/opt/X11R5/man:/opt/gnu/man
+OPENWINHOME=/usr/openwin
+XHOME=/opt/X11R5
+HOSTNAME=strauss.udel.edu
+XRSH_AUTH_TYPE=xauth
+XRSH_ENVS_TO_PASS=XRSH_ENVS_TO_PASS XRSH_AUTH_TYPE
+LOCALENV=
+
+361shell  [/]> exit
+Connection closed.
+
+
+%exit exit
+
+script done on Mon Mar 11 15:55:02 2002

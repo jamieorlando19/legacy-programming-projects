@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Bench
+{  
+   public static void main(String[] args)
+   {  
+      //Employee Test
+      System.out.println("***Employee Test***");
+      Employee employee = new Employee("Joe Average", 30000, 1998, 5, 6);      
+      System.out.println("Name: " + employee.getName());
+      System.out.println("Salary: " + employee.getSalary());
+      employee.raiseSalary(5.7);
+      System.out.println("Salary w/ Raise: " + employee.getSalary());
+      System.out.println("Hire Day: " + employee.getHireDay());
+      
+      //Manager Test
+      System.out.println("\n***Manager Test***");
+      Manager manager = new Manager("Joe Hot-Shot", 70000, 1985, 4, 13);
+      System.out.println("Name: " + manager.getName());
+      System.out.println("Salary: " + manager.getSalary());
+      manager.raiseSalary(7);
+      System.out.println("Salary w/ Raise: " + manager.getSalary());
+      manager.setBonus(3000);
+      System.out.println("Salary w/ Bonus: " + manager.getSalary());
+      System.out.println("Hire Day: " + manager.getHireDay());
+      
+      //Engineer Test
+      System.out.println("\n***Engineer Test***");
+      Engineer engineer = new Engineer("Joe Geek", 
+   }
+}

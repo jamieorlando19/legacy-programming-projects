@@ -1,0 +1,43 @@
+Welcome to DrScheme, version 53.
+Language: R4RS+.
+initialized
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+#t
+> (play-game)
+
+At dormitory : kalim says -- I take kcard 
+At errol-office : errol says -- I take errol-card 
+At keith-office : keith says -- I take keith-card 
+At dormitory : kalim says -- I take late-homework 
+kalim moves from dormitory to Trabant-Center 
+kalim moves from Trabant-Center to Smith-Hall 
+kalim moves from Smith-Hall to Greenhouse 
+kalim moves from Greenhouse to keith-office 
+At keith-office : kalim says -- Hi keith 
+At keith-office : kalim gives a halfhearted attempt at a smile ,and hands over the late homework with a worried look on his face. 
+At keith-office : kalim says -- I lose late-homework 
+At keith-office : kalim says -- *beg* please can you accept my homework late ,oh almighty and benificent keith? 
+At keith-office : keith shrugs. 
+At keith-office : keith says -- Sure ,whatever... just don 't let it happen again. 
+At keith-office : keith says -- I take late-homework 
+At keith-office : kalim says -- Thanks! 
+At keith-office : keith says -- Oh ,and one last thing... 
+At keith-office : kalim says -- 'eh? 
+At keith-office : keith says -- You should be taking notes ,Kalim!!!! 
+At keith-office : kalim cackles gleefully 
+kalim moves from keith-office to Greenhouse 
+At Greenhouse : kalim pants heavily. 
+message-displayed
+> 
