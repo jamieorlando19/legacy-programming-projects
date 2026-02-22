@@ -23,14 +23,8 @@ A collection of personal programming projects spanning from high school through 
 | [CISC 361](2.%20College/CISC-361) — Operating Systems | C projects: a pthreads race condition demo and a Unix shell interpreter with built-in commands, PATH resolution, and `fork`/`execve` process execution |
 | [CISC 370](2.%20College/CISC-370) — Object-Oriented Programming, Java and the World Wide Web | Java assignments covering inheritance hierarchies, generic sorting, Java2D flag graphics, socket-based file transfer, and a networked multiplayer Scrabble game |
 | [CISC 450](2.%20College/CISC-450) — Computer Networks | Lecture slides and reference papers; no source code retained |
-| [CISC 475](2.%20College/CISC-475) — Object-oriented Software Engineering | Full-stack band profile web platform (Team Warthog) — user accounts, media uploads, news management, site theming, and integrated chat; built with Java, JSP, and JDBC |
+| [CISC 475](2.%20College/CISC-475) — Object-oriented Software Engineering | Full-stack band profile web platform (Team Warthog) — user accounts, media uploads, news management, site theming, and integrated chat; built with Java, JSP, and JDBC. Includes a [standalone chat app](2.%20College/CISC-475/Chat-Standalone) as a separate deliverable |
 | [CISC 479](2.%20College/CISC-479) — Topics in Web Application Development | JavaBean and DAO components extending the CISC 475 band platform — show/concert tracking, band/musician relationships, and user activity logging |
-
-### Related
-
-| Project | Description |
-|---------|-------------|
-| [Chat Application](2.%20College/475) | Standalone multi-user chat system (Team Warthog) — likely a separate deliverable from CISC 475; Java sockets, Swing GUI, one thread per client |
 
 ---
 
