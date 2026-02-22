@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.cis.udel.edu)",
+      "WebFetch(domain:www1.udel.edu)"
+    ]
+  }
+}
